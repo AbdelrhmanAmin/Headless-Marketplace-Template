@@ -4,17 +4,19 @@ import { Card as ICard } from '../Interfaces'
 
 export default function Marketplace({ cards }: { cards: ICard[] }) {
   return (
-    <div className="flex min-h-screen flex-col items-center justify-center py-2">
+    <div className="flex min-h-screen flex-col items-center py-2">
       <Head>
         <title>Marketplace</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <h1 className="text-7xl">Hello.</h1>
-        {cards.map((card) => (
-          <Card {...card} />
-        ))}
+      <main className='flex flex-col items-center'>
+        <h1 className="text-7xl">Marketplace</h1>
+        <div className="flex gap-4 mt-10">
+          {cards.map((card) => (
+            <Card {...card} />
+          ))}
+        </div>
       </main>
     </div>
   )

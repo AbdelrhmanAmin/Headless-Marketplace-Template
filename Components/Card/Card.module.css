@@ -8,7 +8,7 @@ rounded-t-md rounded-b-2xl
 }
 
 .nftImageContainer {
-  @apply relative flex h-80
+  @apply relative flex h-80 overflow-hidden
   items-center justify-center p-2;
 }
 
