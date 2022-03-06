@@ -1,6 +1,8 @@
 import Head from 'next/head'
+import { Card } from '../Components'
+import { Card as ICard } from '../Interfaces'
 
-export default function Home({ cards }) {
+export default function Marketplace({ cards }: { cards: ICard[] }) {
   return (
     <div className="flex min-h-screen flex-col items-center justify-center py-2">
       <Head>
@@ -10,7 +12,9 @@ export default function Home({ cards }) {
 
       <main>
         <h1 className="text-7xl">Hello.</h1>
-        <pre>{JSON.stringify(cards, null, 2)}</pre>
+        {cards.map((card) => (
+          <Card {...card} />
+        ))}
       </main>
     </div>
   )

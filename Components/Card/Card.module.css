@@ -1,0 +1,45 @@
+.root {
+  @apply mx-auto flex
+  h-full flex-col
+rounded-t-md rounded-b-2xl
+  bg-white shadow-lg
+  duration-300 ease-in-out
+  hover:shadow-2xl sm:max-w-xs;
+}
+
+.nftImageContainer {
+  @apply relative flex h-80
+  items-center justify-center p-2;
+}
+
+.badge {
+  @apply absolute
+  right-3 bottom-3
+  opacity-90;
+}
+
+.cardBody {
+  @apply gap-y-4
+  rounded-b-2xl border-t-2
+  py-2
+  px-4 shadow-inner;
+  min-height: 80px;
+}
+.cardDetails {
+  @apply grid w-full
+  grid-cols-4;
+}
+.cardDetails > div:first-of-type {
+  @apply col-span-3;
+}
+.cardDetails > div:nth-of-type(2) {
+  @apply items-end;
+}
+.nftName {
+  /* Took this logic from Tailwind "line-clamp" package */
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  @apply overflow-hidden text-ellipsis
+  text-sm font-semibold;
+}
