@@ -8,8 +8,18 @@ rounded-t-md rounded-b-2xl
 }
 
 .nftImageContainer {
-  @apply relative flex h-80 overflow-hidden
+  @apply relative
+  flex h-80 w-80
   items-center justify-center p-2;
+}
+
+.nftImageContainer > div {
+  @apply h-full w-full
+  overflow-hidden rounded-md;
+}
+
+.nftImageContainer > div > img {
+  @apply h-full w-full;
 }
 
 .badge {
@@ -41,5 +51,5 @@ rounded-t-md rounded-b-2xl
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;
   @apply overflow-hidden text-ellipsis
-  text-sm font-semibold;
+  capitalize text-base font-semibold;
 }
