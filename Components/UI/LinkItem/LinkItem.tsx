@@ -1,18 +1,20 @@
 import React from 'react'
 import Link from 'next/link'
 import cn from 'classnames'
-
+import s from './LinkItem.module.css'
 interface LinkItemPropsInterface {
-  href: string
+  slug: string
   className?: string
+  isActive?: boolean
   onClick?: () => {}
   children: React.ReactChildren | string
 }
 
 const LinkItem = ({
   children,
-  href,
+  slug,
   className,
+  isActive,
   ...rest
 }: LinkItemPropsInterface) => {
   const handleOnClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -20,9 +22,9 @@ const LinkItem = ({
       handleOnClick(e)
     }
   }
-  const rootClass = cn(className)
+  const rootClass = cn(s.root, s.ghost, { [s.active]: isActive }, className)
   return (
-    <Link href={href}>
+    <Link href={slug}>
       <a className={rootClass} onClick={handleOnClick} role="button" {...rest}>
         {children}
       </a>
