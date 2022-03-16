@@ -4,9 +4,21 @@ import { Header } from '@Components/UI'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <div className='bg-yellow-400'>
+    <div className="bg-yellow-400">
+      <style jsx global>{`
+        html,
+        body {
+          padding: 0;
+          margin: 0;
+          font-family: 'Ubuntu Mono', monospace;
+        }
+
+        * {
+          box-sizing: border-box;
+        }
+      `}</style>
       <Header />
-      <main className='px-24'>
+      <main className="px-24">
         <Component {...pageProps} />
       </main>
     </div>

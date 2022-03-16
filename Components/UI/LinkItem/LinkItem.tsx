@@ -26,7 +26,7 @@ const LinkItem = ({
   return (
     <Link href={slug}>
       <a className={rootClass} onClick={handleOnClick} role="button" {...rest}>
-        {children}
+        <span className='flex items-center'>{children}</span>
       </a>
     </Link>
   )

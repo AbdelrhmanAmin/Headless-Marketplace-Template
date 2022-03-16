@@ -12,7 +12,7 @@ const Header = () => {
         <div className="flex space-x-4 text-2xl">
           {navigation.map(({ slug, title }) => (
             <LinkItem isActive={asPath === slug} slug={slug} key={slug}>
-              {title}
+              {`[${title}]`}
             </LinkItem>
           ))}
         </div>
