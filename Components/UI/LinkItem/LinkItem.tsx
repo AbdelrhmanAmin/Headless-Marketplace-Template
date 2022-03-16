@@ -4,9 +4,9 @@ import cn from 'classnames'
 
 interface LinkItemPropsInterface {
   href: string
-  className: string
+  className?: string
   onClick?: () => {}
-  children: React.ReactChildren
+  children: React.ReactChildren | string
 }
 
 const LinkItem = ({
@@ -29,3 +29,5 @@ const LinkItem = ({
     </Link>
   )
 }
+
+export default LinkItem
