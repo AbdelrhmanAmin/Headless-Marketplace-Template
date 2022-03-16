@@ -13,8 +13,8 @@ export default function Marketplace({ cards }: { cards: ICard[] }) {
       <main className="flex flex-col items-center">
         <h1 className="text-7xl">Marketplace</h1>
         <div className="mt-10 flex gap-4">
-          {cards.map((card) => (
-            <Card {...card} />
+          {cards.map((card, i) => (
+            <Card {...card} key={i} />
           ))}
         </div>
       </main>
