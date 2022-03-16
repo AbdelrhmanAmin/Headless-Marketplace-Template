@@ -1,7 +1,7 @@
 import React from 'react'
-import { Stack } from '../index'
-import { Card as ICard } from '../../../Interfaces'
-import { Coin } from '../../icons'
+import { Stack } from '@Components/UI'
+import { Card as ICard } from '@Interfaces'
+import { Coin } from '@Components/icons'
 import s from './Card.module.css'
 
 const Card = ({ cardMedia, name, price }: ICard) => {
