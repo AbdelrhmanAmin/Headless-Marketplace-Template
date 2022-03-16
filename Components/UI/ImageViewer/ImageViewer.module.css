@@ -1,0 +1,8 @@
+.root {
+  @apply relative flex h-full
+  w-full items-center justify-center overflow-hidden;
+}
+
+.root img {
+  @apply rounded-md;
+}
