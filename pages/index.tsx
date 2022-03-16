@@ -1,24 +1,22 @@
 import Head from 'next/head'
-import { Card } from '@Components/UI'
+import { Card, SEO } from '@Components/UI'
 import { Card as ICard } from '@Interfaces'
 
 export default function Marketplace({ cards }: { cards: ICard[] }) {
   return (
-    <div className="flex min-h-screen flex-col items-center bg-gray-200 py-2">
-      <Head>
-        <title>Marketplace</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
-      <main className="flex flex-col items-center">
-        <h1 className="text-7xl">Marketplace</h1>
-        <div className="mt-10 flex gap-4">
-          {cards.map((card, i) => (
-            <Card {...card} key={i} />
-          ))}
-        </div>
-      </main>
-    </div>
+    <>
+      <SEO title={'Marketplace'} />
+      <div className="flex min-h-screen flex-col items-center bg-gray-200 py-2">
+        <main className="flex flex-col items-center">
+          <h1 className="text-7xl">Marketplace</h1>
+          <div className="mt-10 grid grid-cols-4 gap-4">
+            {cards.map((card, i) => (
+              <Card {...card} key={i} />
+            ))}
+          </div>
+        </main>
+      </div>
+    </>
   )
 }
 
