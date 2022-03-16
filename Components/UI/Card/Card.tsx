@@ -3,14 +3,13 @@ import { Stack } from '@Components/UI'
 import { Card as ICard } from '@Interfaces'
 import { Coin } from '@Components/icons'
 import s from './Card.module.css'
+import ImageViewer from '../ImageViewer'
 
-const Card = ({ cardMedia, name, price }: ICard) => {
+const Card = ({ cardMedia: { url }, name, price }: ICard) => {
   return (
     <div className={s.root}>
       <div className={s.nftImageContainer}>
-        <div>
-          <img src={cardMedia.url} alt={name} />
-        </div>
+        <ImageViewer media={url} alt={name} variant="Marketplace" />
       </div>
       <Stack className={s.cardBody}>
         <div className={s.cardDetails}>
