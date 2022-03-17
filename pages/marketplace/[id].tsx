@@ -1,12 +1,12 @@
 import React from 'react'
 import type { Card as ICard } from '@Interfaces'
-import { Card } from '@Components/UI'
+import { ProductPage, Container } from '@Components/UI'
 
 const Product = ({ card }: { card: ICard }) => {
   return (
-    <>
-      <Card {...card} />
-    </>
+    <Container hasPaddingX hasPaddingY>
+      <ProductPage {...card} />
+    </Container>
   )
 }
 
