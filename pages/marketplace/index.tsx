@@ -1,15 +1,15 @@
-import { Card, LinkItem, SEO } from '@Components/UI'
+import { Card, Container, LinkItem, SEO } from '@Components/UI'
 import ROUTES from '@constants/routes.json'
 import { Card as ICard } from '@Interfaces'
 
 export default function Marketplace({ cards }: { cards: ICard[] }) {
   return (
-    <>
+    <Container hasPaddingX hasPaddingY>
       <SEO title={'Marketplace'} />
       <h1 className="text-center text-7xl font-semibold text-gray-800">
         [Marketplace]
       </h1>
-      <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+      <div className="mt-10 grid gap-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-center">
         {cards.map((card) => (
           <LinkItem
             slug={`${ROUTES.MARKETPLACE.slug}/${card.id}`}
@@ -19,7 +19,7 @@ export default function Marketplace({ cards }: { cards: ICard[] }) {
           </LinkItem>
         ))}
       </div>
-    </>
+    </Container>
   )
 }
 

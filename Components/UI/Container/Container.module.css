@@ -1,0 +1,11 @@
+.root {
+  @apply min-h-full max-w-7xl mx-auto;
+}
+
+.paddingX {
+  @apply px-4 md:px-6;
+}
+
+.paddingY {
+  @apply py-8;
+}
