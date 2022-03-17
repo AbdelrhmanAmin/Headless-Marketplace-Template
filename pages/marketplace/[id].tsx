@@ -16,7 +16,7 @@ interface PageContext {
 }
 export const getStaticPaths = async () => {
   const result = await fetch(
-    'https://graphql.contentful.com/content/v1/spaces/zasyld3jc6mz/environments/master',
+    `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/master`,
     {
       method: 'POST',
       headers: {
@@ -57,7 +57,7 @@ export const getStaticPaths = async () => {
 export const getStaticProps = async (context: PageContext) => {
   const { id } = context.params
   const result = await fetch(
-    'https://graphql.contentful.com/content/v1/spaces/zasyld3jc6mz/environments/master',
+    `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/master`,
     {
       method: 'POST',
       headers: {

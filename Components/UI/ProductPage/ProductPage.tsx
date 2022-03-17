@@ -5,7 +5,7 @@ import { Coin } from '@Components/icons'
 interface IProductPage {
   media: { url: string }
   name: string
-  price: string
+  price: number
 }
 
 const ProductPage = ({ media, name, price }: IProductPage) => {

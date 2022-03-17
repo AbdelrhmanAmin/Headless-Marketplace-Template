@@ -25,7 +25,7 @@ export default function Marketplace({ cards }: { cards: ICard[] }) {
 
 export const getStaticProps = async () => {
   const result = await fetch(
-    'https://graphql.contentful.com/content/v1/spaces/zasyld3jc6mz/environments/master',
+    `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/master`,
     {
       method: 'POST',
       headers: {
