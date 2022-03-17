@@ -20,6 +20,7 @@ const LinkItem = ({
   ...rest
 }: LinkItemPropsInterface) => {
   const handleOnClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.currentTarget.blur()
     if (rest.onClick) {
       handleOnClick(e)
     }

@@ -18,7 +18,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         }
       `}</style>
       <Header />
-      <main className="px-24">
+      <main className="px-8 md:px-16 lg:px-24">
         <Component {...pageProps} />
       </main>
     </div>

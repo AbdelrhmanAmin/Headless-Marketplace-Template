@@ -7,9 +7,9 @@ const Header = () => {
   const { asPath } = useRouter()
 
   return (
-    <header className="min-h-[60px] bg-gray-700 px-24 py-2 text-white">
+    <header className="bg-gray-700 px-24 py-2 text-white">
       <div className="flex w-1/2">
-        <div className="flex space-x-4 text-2xl">
+        <div className="flex space-x-4 text-xl font-medium">
           {navigation.map(({ slug, title }) => (
             <LinkItem
               variant="ghost"
@@ -17,7 +17,15 @@ const Header = () => {
               slug={slug}
               key={slug}
             >
-              {`[${title}]`}
+              {slug === '/' ? (
+                <div className="flex space-x-1">
+                  <span>🔥</span>
+                  <span>{title}</span>
+                  <span>🔥</span>
+                </div>
+              ) : (
+                title
+              )}
             </LinkItem>
           ))}
         </div>
