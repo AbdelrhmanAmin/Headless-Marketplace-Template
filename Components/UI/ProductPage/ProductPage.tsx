@@ -28,9 +28,19 @@ const ProductPage = ({ media, name, price }: IProductPage) => {
             </div>
           </Stack>
           <Stack className="mt-14">
-            <div className="shadow hover:shadow-lg transition-shadow duration-200 rounded-md h-60 border-2 border-yellow-700 bg-yellow-600">
-              <div className="flex items-center justify-center h-full w-full text-xl">
-                Coming soon...
+            <div className="rounded-md border-2 border-yellow-700 bg-yellow-600">
+              <div className="h-60">
+                <div className="pl-5 pt-2 text-xl">
+                  <strong>📒 Description</strong>
+                </div>
+                <div className="overflow-y-auto max-h-40 p-5 pt-2">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Culpa mollitia quos, harum, nulla quasi expedita quo
+                    architecto est aliquam dolores sapiente possimus
+                    consequuntur, dolor nostrum place
+                  </p>
+                </div>
               </div>
             </div>
           </Stack>

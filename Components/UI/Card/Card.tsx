@@ -1,9 +1,17 @@
 import React from 'react'
 import { Stack, Badge } from '@Components/UI'
-import { Card as ICard } from '@Interfaces'
 import { Coin } from '@Components/icons'
 import s from './Card.module.css'
 import ImageViewer from '../ImageViewer'
+
+export interface ICard {
+  id: number
+  media: {
+    url: string
+  }
+  name: string
+  price: number
+}
 
 const Card = ({ media: { url }, name, price }: ICard) => {
   return (
@@ -13,7 +21,14 @@ const Card = ({ media: { url }, name, price }: ICard) => {
         <div className="top-3 right-4 absolute">
           <Badge variant="live" size="tiny">
             <div className="flex space-x-1.5 px-0.5 min-w-[48px] text-white font-bold">
-              <span>🦁🐯🐺</span>
+              {['🦁', '🐯', '🐺'].map((icon) => (
+                <span
+                  key={icon}
+                  className="scale-100 hover:scale-150 duration-200 transition"
+                >
+                  {icon}
+                </span>
+              ))}
             </div>
           </Badge>
         </div>

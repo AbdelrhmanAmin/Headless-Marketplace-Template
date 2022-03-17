@@ -1,6 +1,6 @@
 import { Card, Container, LinkItem, SEO } from '@Components/UI'
+import type { ICard } from '@Components/UI'
 import ROUTES from '@constants/routes.json'
-import { Card as ICard } from '@Interfaces'
 
 export default function Marketplace({ cards }: { cards: ICard[] }) {
   return (

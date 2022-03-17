@@ -5,7 +5,7 @@ const LandingPage = () => {
   return (
     <Container hasPaddingX>
       <SEO title="[name]" />
-      <img src="/placeholder.jpg" alt="hi" />
+      <img src="/placeholder.jpg" alt="hi" className='w-full h-screen' />
     </Container>
   )
 }

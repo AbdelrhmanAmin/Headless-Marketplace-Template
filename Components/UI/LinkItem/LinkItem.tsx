@@ -4,7 +4,7 @@ import cn from 'classnames'
 import s from './LinkItem.module.css'
 interface LinkItemPropsInterface {
   slug: string
-  variant?: 'ghost'
+  variant?: 'primary' | 'ghost'
   className?: string
   isActive?: boolean
   isExternal?: true
