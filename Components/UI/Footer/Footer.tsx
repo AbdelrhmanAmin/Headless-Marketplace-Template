@@ -1,3 +1,4 @@
+import { IconsQuery } from '@Components/icons'
 import React from 'react'
 import LinkItem from '../LinkItem'
 
@@ -24,11 +25,18 @@ const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white">
       <div className="min-h-[160px] flex items-center justify-center">
-        {icons.map(({ icon, slug }) => (
-          <LinkItem slug={slug} isExternal>
-            {icon}
-          </LinkItem>
-        ))}
+        <div className='flex'>
+          {icons.map(({ icon, slug }) => (
+            <LinkItem slug={slug} isExternal>
+              {IconsQuery({
+                name: icon.toLowerCase(),
+                variant: 'white',
+                hasBg: true,
+                size: 'small',
+              })}
+            </LinkItem>
+          ))}
+        </div>
       </div>
     </footer>
   )

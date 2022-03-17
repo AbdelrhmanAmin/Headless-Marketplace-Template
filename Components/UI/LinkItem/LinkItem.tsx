@@ -9,7 +9,7 @@ interface LinkItemPropsInterface {
   isActive?: boolean
   isExternal?: true
   onClick?: () => {}
-  children: React.ReactElement | string
+  children: React.ReactNode | string
 }
 
 const LinkItem = ({
