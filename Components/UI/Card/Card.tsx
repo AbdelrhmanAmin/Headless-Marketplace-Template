@@ -12,9 +12,8 @@ const Card = ({ media: { url }, name, price }: ICard) => {
         <ImageViewer media={url} alt={name} variant="Marketplace" />
         <div className="top-3 right-4 absolute">
           <Badge variant="live" size="tiny">
-            <div className='flex space-x-1.5 px-0.5 min-w-[48px] text-white font-bold'>
-              <span>🔥</span>
-              <strong>HOT</strong>
+            <div className="flex space-x-1.5 px-0.5 min-w-[48px] text-white font-bold">
+              <span>🦁🐯🐺</span>
             </div>
           </Badge>
         </div>
