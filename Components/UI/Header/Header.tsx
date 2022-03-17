@@ -8,8 +8,8 @@ const Header = () => {
 
   return (
     <header className="bg-gray-700 py-2 text-white">
-      <Container hasPaddingX>
-        <div className="flex w-1/2">
+      <Container hasPaddingX className="flex">
+        <div className="flex w-1/2 justify-start">
           <div className="flex space-x-4 text-xl font-medium">
             {navigation.map(({ slug, title }) => (
               <LinkItem
@@ -32,7 +32,13 @@ const Header = () => {
           </div>
         </div>
         <div className="flex flex-shrink"></div>
-        <div className="flex w-1/2"></div>
+        <div className="flex w-1/2 justify-end">
+          <div className="flex">
+            <LinkItem isExternal slug="https://github.com/AbdelrhmanAmin">
+              <span className='bg-yellow-600 hover:bg-yellow-400 hover:text-yellow-100 transition-colors duration-500 text-xl px-4 rounded-lg font-medium'>@Abdo Amin</span>
+            </LinkItem>
+          </div>
+        </div>
       </Container>
     </header>
   )

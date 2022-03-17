@@ -7,6 +7,7 @@ interface LinkItemPropsInterface {
   variant?: 'ghost'
   className?: string
   isActive?: boolean
+  isExternal?: true
   onClick?: () => {}
   children: React.ReactElement | string
 }
@@ -16,6 +17,7 @@ const LinkItem = ({
   slug,
   className,
   isActive,
+  isExternal,
   variant,
   ...rest
 }: LinkItemPropsInterface) => {
@@ -31,6 +33,20 @@ const LinkItem = ({
     { [s.active]: isActive },
     className
   )
+  if (isExternal) {
+    return (
+      <a
+        className={rootClass}
+        href={slug}
+        target="_blank"
+        rel="noopener noreferrer"
+        onClick={handleOnClick}
+        {...rest}
+      >
+        {children}
+      </a>
+    )
+  }
   return (
     <Link href={slug}>
       <a className={rootClass} onClick={handleOnClick} role="button" {...rest}>
