@@ -11,7 +11,7 @@ interface IProductPage {
 const ProductPage = ({ media, name, price }: IProductPage) => {
   return (
     <section>
-      <div className="flex justify-evenly">
+      <div className="flex items-center justify-evenly">
         <div className="lg:w-5/12">
           <ImageViewer variant="Product" media={media.url} />
         </div>
