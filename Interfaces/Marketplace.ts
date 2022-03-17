@@ -1,5 +1,6 @@
 export interface Card {
-  cardMedia: {
+  id: number
+  media: {
     url: string
   }
   name: string

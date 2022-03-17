@@ -5,7 +5,7 @@ import { Coin } from '@Components/icons'
 import s from './Card.module.css'
 import ImageViewer from '../ImageViewer'
 
-const Card = ({ cardMedia: { url }, name, price }: ICard) => {
+const Card = ({ media: { url }, name, price, id }: ICard) => {
   return (
     <div className={s.root}>
       <div className={s.nftImageContainer}>

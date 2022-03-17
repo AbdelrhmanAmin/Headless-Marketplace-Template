@@ -1,15 +1,15 @@
 .root {
-  @apply mx-auto flex
-  h-full flex-col
+  @apply flex flex-col 
+  h-full w-full sm:max-w-xs
   rounded-t-md rounded-b-2xl
-  bg-yellow-900 shadow-lg
+  bg-white
   duration-300 ease-in-out
-  hover:shadow-2xl sm:max-w-xs;
+  shadow-lg hover:shadow-2xl;
 }
 
 .nftImageContainer {
   @apply relative
-  flex h-80 w-80
+  flex h-80
   items-center justify-center p-2;
 }
 
@@ -31,8 +31,8 @@
 .cardBody {
   @apply gap-y-4
   rounded-b-2xl border-t-2
-  border-yellow-500 bg-yellow-900 py-2
-  px-4 text-white;
+  border-yellow-500 bg-white py-2
+  px-4 shadow-inner;
   min-height: 80px;
 }
 .cardDetails {
@@ -40,7 +40,7 @@
   grid-cols-4;
 }
 .cardDetails > div:first-of-type {
-  @apply col-span-3;
+  @apply col-span-3 text-left;
 }
 .cardDetails > div:nth-of-type(2) {
   @apply items-end;

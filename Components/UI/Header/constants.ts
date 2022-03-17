@@ -8,7 +8,7 @@ export interface NavigationInterface {
 export const navigation: NavigationInterface[] = [
   {
     slug: '/',
-    title: 'Logo',
+    title: '[COOL_LOGO]',
   },
   ROUTES.MARKETPLACE,
 ]
