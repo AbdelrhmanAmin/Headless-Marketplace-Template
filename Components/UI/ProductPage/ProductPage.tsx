@@ -13,21 +13,25 @@ const ProductPage = ({ media, name, price }: IProductPage) => {
     <section>
       <div className="flex items-center justify-evenly">
         <div className="lg:w-5/12">
-          <ImageViewer variant="Product" media={media.url} />
+          <Stack>
+            <ImageViewer variant="Product" media={media.url} />
+          </Stack>
         </div>
         <div className="flex flex-col w-1/2 mt-12">
-          <Stack className="space-y-0">
-            <h3 className="text-7xl text-white">{name}</h3>
-            <div className="flex items-center space-x-2 bg-white py-1 px-4 w-fit rounded-md shadow-md">
+          <Stack className="space-y-3 text-white">
+            <h3 className="text-7xl">{name}</h3>
+            <div className="flex items-center space-x-2 bg-yellow-600 py-1 px-4 w-fit rounded-md shadow-md">
               <span className="w-9 h-9">
                 <Coin />
               </span>
-              <span className="text-5xl text-gray-700">{price}</span>
+              <span className="text-5xl">{price}</span>
             </div>
           </Stack>
           <Stack className="mt-14">
-            <div className="rounded-md h-60 border-2 border-yellow-700 bg-yellow-600">
-              <div className='flex items-center justify-center h-full w-full text-xl'>Coming soon...</div>
+            <div className="shadow hover:shadow-lg transition-shadow duration-200 rounded-md h-60 border-2 border-yellow-700 bg-yellow-600">
+              <div className="flex items-center justify-center h-full w-full text-xl">
+                Coming soon...
+              </div>
             </div>
           </Stack>
         </div>

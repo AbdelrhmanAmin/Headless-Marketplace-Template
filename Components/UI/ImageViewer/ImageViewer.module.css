@@ -1,6 +1,7 @@
 .root {
-  @apply relative flex h-full
-  w-full items-center justify-center overflow-hidden;
+  @apply relative h-full w-full
+  flex items-center justify-center
+  overflow-hidden;
 }
 
 .root img {
