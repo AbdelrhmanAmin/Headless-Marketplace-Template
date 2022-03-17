@@ -33,7 +33,7 @@ const Footer = () => {
         </div>
         <div className="flex">
           {icons.map(({ name, slug }) => (
-            <LinkItem slug={slug} isExternal>
+            <LinkItem key={slug} slug={slug} isExternal>
               {IconsQuery({
                 name,
                 variant: 'white',
