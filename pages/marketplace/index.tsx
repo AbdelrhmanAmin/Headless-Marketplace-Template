@@ -1,4 +1,5 @@
 import { Card, LinkItem, SEO } from '@Components/UI'
+import { MARKETPLACE } from '@constants/routes.json'
 import { Card as ICard } from '@Interfaces'
 
 export default function Marketplace({ cards }: { cards: ICard[] }) {
@@ -10,7 +11,7 @@ export default function Marketplace({ cards }: { cards: ICard[] }) {
           <h1 className="text-7xl font-semibold text-gray-800">Marketplace</h1>
           <div className="mt-10 grid grid-cols-4 gap-4">
             {cards.map((card) => (
-              <LinkItem slug={`${card.id}`} key={card.id}>
+              <LinkItem slug={`${MARKETPLACE.slug}/${card.id}`} key={card.id}>
                 <Card {...card} />
               </LinkItem>
             ))}

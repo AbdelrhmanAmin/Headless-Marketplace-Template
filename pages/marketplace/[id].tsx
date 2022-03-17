@@ -29,11 +29,6 @@ export const getStaticPaths = async () => {
           cardCollection {
             items {
               id
-              media: cardMedia{
-                url
-              }
-              name
-              price
             }
           }
         }
@@ -76,7 +71,7 @@ export const getStaticProps = async (context: PageContext) => {
           ) {
             items {
               id
-              media {
+              media: cardMedia {
                 url
               }
               name
