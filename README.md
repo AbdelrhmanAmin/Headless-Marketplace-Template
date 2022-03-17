@@ -24,4 +24,4 @@ Issues & PRs are welcome.
 
 ## Credits
 
-All Thanks goes to my senior [@Jalal246](https://github.com/jalal246)
+All thanks goes to my senior [@Jalal246](https://github.com/jalal246)
