@@ -18,7 +18,7 @@ const ProductPage = ({ media, name, price }: IProductPage) => {
         <div className="flex flex-col w-1/2 mt-12">
           <Stack className="space-y-0">
             <h3 className="text-7xl text-white">{name}</h3>
-            <div className="flex items-center space-x-2 bg-white py-1 px-4 w-fit">
+            <div className="flex items-center space-x-2 bg-white py-1 px-4 w-fit rounded-md shadow-md">
               <span className="w-9 h-9">
                 <Coin />
               </span>

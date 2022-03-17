@@ -16,8 +16,8 @@ const Variants: {
   [key in VariantTypes]: ImgPropsInterface
 } = Object.freeze({
   Marketplace: {
-    width: 305,
     height: 305,
+    width: 305,
     layout: 'fixed',
     objectFit: 'cover',
   },
