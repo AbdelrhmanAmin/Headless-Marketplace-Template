@@ -1,9 +1,8 @@
 import React from 'react'
 import type { Card as ICard } from '@Interfaces'
-import { useRouter } from 'next/router'
 
 const Product = ({ card }: { card: ICard }) => {
-  return <>{card.name}</>
+  return <>{JSON.stringify(card, null, 2)}</>
 }
 
 interface PageContext {
@@ -24,6 +23,7 @@ export const getStaticPaths = async () => {
         query {
           cardCollection{
             items{
+              id
               cardMedia{
                 url
               }
@@ -65,9 +65,9 @@ export const getStaticProps = async (context: PageContext) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        query: `  query Product($ID: Int){
+        query: `  query Product($ID: Int = ${id}){
           cardCollection(
-          where: {id: ${id}}
+          where: {id: $ID}
           ) {
             items {
               id
@@ -90,7 +90,7 @@ export const getStaticProps = async (context: PageContext) => {
   }
 
   const { data } = await result.json()
-  const card = data.cardCollection.items
+  const card = data.cardCollection.items[0]
 
   return {
     props: { card },
