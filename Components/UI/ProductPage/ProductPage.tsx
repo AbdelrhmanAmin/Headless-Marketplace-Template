@@ -11,23 +11,37 @@ interface IProductPage {
 const ProductPage = ({ media, name, price }: IProductPage) => {
   return (
     <section>
-      <div className="flex justify-evenly">
+      <div className="flex items-center justify-evenly">
         <div className="lg:w-5/12">
-          <ImageViewer variant="Product" media={media.url} />
+          <Stack>
+            <ImageViewer variant="Product" media={media.url} />
+          </Stack>
         </div>
         <div className="flex flex-col w-1/2 mt-12">
-          <Stack className="space-y-8">
-            <h3 className="text-7xl text-white">{name}</h3>
-            <div className="flex items-center space-x-2 bg-white py-1 px-4 w-fit">
+          <Stack className="space-y-3 text-white">
+            <h3 className="text-7xl">{name}</h3>
+            <div className="flex items-center space-x-2 bg-yellow-600 py-1 px-4 w-fit rounded-md shadow-md">
               <span className="w-9 h-9">
                 <Coin />
               </span>
-              <span className="text-5xl text-gray-900">{price}</span>
+              <span className="text-5xl">{price}</span>
             </div>
           </Stack>
           <Stack className="mt-14">
-            <div className="rounded-md h-60 border-2 border-yellow-700 bg-yellow-600">
-              <div className='flex items-center justify-center h-full w-full text-xl'>Coming soon...</div>
+            <div className="rounded-md border-2 border-yellow-700 bg-yellow-600">
+              <div className="h-60">
+                <div className="pl-5 pt-2 text-xl">
+                  <strong>📒 Description</strong>
+                </div>
+                <div className="overflow-y-auto max-h-40 p-5 pt-2">
+                  <p>
+                    Lorem ipsum dolor sit amet, consectetur adipisicing elit.
+                    Culpa mollitia quos, harum, nulla quasi expedita quo
+                    architecto est aliquam dolores sapiente possimus
+                    consequuntur, dolor nostrum place
+                  </p>
+                </div>
+              </div>
             </div>
           </Stack>
         </div>

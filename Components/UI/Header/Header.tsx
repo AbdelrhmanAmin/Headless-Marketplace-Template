@@ -33,9 +33,13 @@ const Header = () => {
         </div>
         <div className="flex flex-shrink"></div>
         <div className="flex w-1/2 justify-end">
-          <div className="flex">
-            <LinkItem isExternal slug="https://github.com/AbdelrhmanAmin">
-              <span className='bg-yellow-600 hover:bg-yellow-400 hover:text-yellow-100 transition-colors duration-500 text-xl px-4 rounded-lg font-medium'>@Abdo Amin</span>
+          <div className="flex space-x-2">
+            <LinkItem
+              isExternal
+              variant="primary"
+              slug="https://github.com/AbdelrhmanAmin"
+            >
+              <span className="text-xl rounded-lg font-medium">🐺</span>
             </LinkItem>
           </div>
         </div>

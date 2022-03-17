@@ -9,17 +9,8 @@
 
 .nftImageContainer {
   @apply relative
-  flex h-80
-  items-center justify-center p-2;
-}
-
-.nftImageContainer > div {
-  @apply h-full w-full
-  overflow-hidden rounded-md;
-}
-
-.nftImageContainer > div > img {
-  @apply h-full w-full;
+  flex items-center justify-center
+  h-80 px-2;
 }
 
 .badge {
@@ -31,7 +22,7 @@
 .cardBody {
   @apply gap-y-4
   rounded-b-2xl border-t-2
-  border-yellow-500 bg-white py-2
+  border-gray-300 py-2
   px-4 shadow-inner;
   min-height: 80px;
 }
