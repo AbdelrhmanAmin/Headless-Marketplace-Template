@@ -28,6 +28,7 @@ export const getStaticPaths = async () => {
         query {
           cardCollection {
             items {
+              id
               media: cardMedia{
                 url
               }

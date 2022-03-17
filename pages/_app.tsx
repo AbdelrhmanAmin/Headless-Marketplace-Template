@@ -4,7 +4,7 @@ import { Header } from '@Components/UI'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <div className="bg-yellow-400">
+    <div className="bg-yellow-400 min-h-screen">
       <style jsx global>{`
         html,
         body {

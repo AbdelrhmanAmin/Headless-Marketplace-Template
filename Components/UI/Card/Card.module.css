@@ -9,7 +9,7 @@
 
 .nftImageContainer {
   @apply relative
-  flex h-80 w-80
+  flex h-80
   items-center justify-center p-2;
 }
 
@@ -40,7 +40,7 @@
   grid-cols-4;
 }
 .cardDetails > div:first-of-type {
-  @apply col-span-3;
+  @apply col-span-3 items-start;
 }
 .cardDetails > div:nth-of-type(2) {
   @apply items-end;
