@@ -1,8 +1,13 @@
 import React from 'react'
 import type { Card as ICard } from '@Interfaces'
+import { Card } from '@Components/UI'
 
 const Product = ({ card }: { card: ICard }) => {
-  return <>{JSON.stringify(card, null, 2)}</>
+  return (
+    <>
+      <Card {...card} />
+    </>
+  )
 }
 
 interface PageContext {
@@ -21,18 +26,17 @@ export const getStaticPaths = async () => {
       body: JSON.stringify({
         query: `
         query {
-          cardCollection{
-            items{
-              id
-              cardMedia{
+          cardCollection {
+            items {
+              media: cardMedia{
                 url
               }
               name
               price
             }
           }
-          
-        }`,
+        }
+        `,
       }),
     }
   )
@@ -71,7 +75,7 @@ export const getStaticProps = async (context: PageContext) => {
           ) {
             items {
               id
-              cardMedia {
+              media {
                 url
               }
               name

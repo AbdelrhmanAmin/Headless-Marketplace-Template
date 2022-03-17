@@ -4,10 +4,11 @@ import cn from 'classnames'
 import s from './LinkItem.module.css'
 interface LinkItemPropsInterface {
   slug: string
+  variant?: 'ghost'
   className?: string
   isActive?: boolean
   onClick?: () => {}
-  children: React.ReactChildren | string
+  children: React.ReactElement | string
 }
 
 const LinkItem = ({
@@ -15,6 +16,7 @@ const LinkItem = ({
   slug,
   className,
   isActive,
+  variant,
   ...rest
 }: LinkItemPropsInterface) => {
   const handleOnClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -22,11 +24,16 @@ const LinkItem = ({
       handleOnClick(e)
     }
   }
-  const rootClass = cn(s.root, s.ghost, { [s.active]: isActive }, className)
+  const rootClass = cn(
+    s.root,
+    variant && s[variant],
+    { [s.active]: isActive },
+    className
+  )
   return (
     <Link href={slug}>
       <a className={rootClass} onClick={handleOnClick} role="button" {...rest}>
-        <span className='flex items-center'>{children}</span>
+        <span className="flex items-center">{children}</span>
       </a>
     </Link>
   )

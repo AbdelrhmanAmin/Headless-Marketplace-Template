@@ -11,7 +11,12 @@ const Header = () => {
       <div className="flex w-1/2">
         <div className="flex space-x-4 text-2xl">
           {navigation.map(({ slug, title }) => (
-            <LinkItem isActive={asPath === slug} slug={slug} key={slug}>
+            <LinkItem
+              variant="ghost"
+              isActive={asPath === slug}
+              slug={slug}
+              key={slug}
+            >
               {`[${title}]`}
             </LinkItem>
           ))}
