@@ -1,35 +1,41 @@
 import { IconsQuery } from '@Components/icons'
 import React from 'react'
-import LinkItem from '../LinkItem'
+import { Stack, LinkItem } from '@Components/UI'
 
 const icons = [
   {
     slug: 'https://www.linkedin.com/in/abdoamin/',
-    icon: 'linkedin',
+    name: 'linkedin',
   },
   {
     slug: 'https://github.com/AbdelrhmanAmin',
-    icon: 'github',
+    name: 'github',
   },
   {
     slug: 'https://medium.com/@abdoamin',
-    icon: 'medium',
+    name: 'medium',
   },
   {
     slug: 'mailto:abdo.amin9991@gmail.com',
-    icon: 'email',
+    name: 'email',
   },
 ]
 
 const Footer = () => {
   return (
     <footer className="bg-gray-900 text-white">
-      <div className="min-h-[160px] flex items-center justify-center">
-        <div className='flex'>
-          {icons.map(({ icon, slug }) => (
+      <Stack className="min-h-[160px] items-center justify-center space-y-2">
+        <div>
+          <strong>Abdo Amin</strong>
+        </div>
+        <div>
+          <strong>Front End Developer</strong>
+        </div>
+        <div className="flex">
+          {icons.map(({ name, slug }) => (
             <LinkItem slug={slug} isExternal>
               {IconsQuery({
-                name: icon.toLowerCase(),
+                name,
                 variant: 'white',
                 hasBg: true,
                 size: 'small',
@@ -37,7 +43,7 @@ const Footer = () => {
             </LinkItem>
           ))}
         </div>
-      </div>
+      </Stack>
     </footer>
   )
 }
