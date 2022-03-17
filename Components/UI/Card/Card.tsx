@@ -18,7 +18,7 @@ const Card = ({ media: { url }, name, price, id }: ICard) => {
           </Stack>
           <Stack>
             <div className="flex items-center space-x-1">
-              <span>{price}</span>
+              <span className='text-gray-700'>{price}</span>
               <span className="h-4 w-4">
                 <Coin />
               </span>
