@@ -58,18 +58,23 @@ export default function Marketplace({ cards }: { cards: ICard[] }) {
     }
     trigger()
   }
+
   React.useEffect(() => {
-    if (lastCardRef.current) {
-      const observer = new IntersectionObserver(
-        ([{ isIntersecting, target }]) => {
-          if (isIntersecting) {
-            const startingIndex = populateWithDummyCards()
-            setTimeout(() => fetchAndHydrate(startingIndex), 1000)
-            observer.unobserve(target)
-          }
+    let timer: ReturnType<typeof setTimeout>
+    const observer = new IntersectionObserver(
+      ([{ isIntersecting, target }]) => {
+        if (isIntersecting) {
+          const startingIndex = populateWithDummyCards()
+          observer.unobserve(target)
+          timer = setTimeout(() => fetchAndHydrate(startingIndex), 1000)
         }
-      )
+      }
+    )
+    if (lastCardRef.current) {
       observer.observe(lastCardRef.current)
+    }
+    return () => {
+      observer.disconnect()
     }
   }, [lastCardRef.current])
   return (
