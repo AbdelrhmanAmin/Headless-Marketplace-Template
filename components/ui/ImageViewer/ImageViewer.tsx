@@ -34,14 +34,19 @@ interface IProps {
   variant: VariantTypes
   alt?: string
   className?: string
+  isLoading?: boolean
 }
 
-const ImageViewer = ({ media, className, alt, variant }: IProps) => {
-  const rootClass = cn(s.root, className)
+const ImageViewer = ({ media, className, alt, variant, isLoading }: IProps) => {
+  const rootClass = cn(s.root, "overflow-hidden px-0.5 py-2", className)
   const img = Variants[variant]
   return (
     <div className={rootClass}>
-      <Image src={media} alt={alt} priority {...img} />
+      {isLoading ? (
+        <div className='h-full w-full bg-gray-600 rounded-md animate-pulse' />
+      ) : (
+        <Image src={media} alt={alt} priority {...img} />
+      )}
     </div>
   )
 }
