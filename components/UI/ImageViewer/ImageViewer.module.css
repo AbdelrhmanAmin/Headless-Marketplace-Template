@@ -1,9 +1,0 @@
-.root {
-  @apply relative h-full w-full
-  flex items-center justify-center
-  overflow-hidden;
-}
-
-.root img {
-  @apply rounded-md;
-}
