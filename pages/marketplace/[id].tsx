@@ -1,6 +1,6 @@
 import React from 'react'
-import { ProductPage, Container } from '@components/UI'
-import type { ICard } from '@components/UI'
+import { ProductPage, Container } from 'sdf/UI'
+import type { ICard } from 'sdf/UI'
 
 const Product = ({ card }: { card: ICard }) => {
   return (
