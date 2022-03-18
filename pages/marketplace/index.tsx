@@ -5,6 +5,7 @@ import ROUTES from '@constants/routes.json'
 
 export default function Marketplace({ cards }: { cards: ICard[] }) {
   const cardsRef = React.useRef(cards)
+  const timerRef: any = React.useRef(null)
   const [, trigger] = React.useReducer((prev) => !prev, false)
   const lastCardRef = React.useRef(null)
   const populateWithDummyCards = () => {
@@ -60,23 +61,27 @@ export default function Marketplace({ cards }: { cards: ICard[] }) {
   }
 
   React.useEffect(() => {
-    let timer: ReturnType<typeof setTimeout>
     const observer = new IntersectionObserver(
       ([{ isIntersecting, target }]) => {
         if (isIntersecting) {
           const startingIndex = populateWithDummyCards()
           observer.unobserve(target)
-          timer = setTimeout(() => fetchAndHydrate(startingIndex), 1000)
+          timerRef.current = setTimeout(() => {
+            fetchAndHydrate(startingIndex)
+          }, 2000)
         }
       }
     )
     if (lastCardRef.current) {
       observer.observe(lastCardRef.current)
     }
-    return () => {
-      observer.disconnect()
-    }
   }, [lastCardRef.current])
+
+  React.useEffect(() => {
+    return () => {
+      clearTimeout(timerRef.current)
+    }
+  }, [])
   return (
     <Container hasPaddingX hasPaddingY>
       <SEO title={'Marketplace'} />
