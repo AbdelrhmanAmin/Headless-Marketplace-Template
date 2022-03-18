@@ -1,6 +1,6 @@
 import React from 'react'
-import { Card, Container, LinkItem, SEO } from '@components/ui'
-import type { ICard } from '@components/ui'
+import { Card, Container, LinkItem, SEO } from '@Components/UI'
+import type { ICard } from '@Components/UI'
 import ROUTES from '@constants/routes.json'
 
 export default function Marketplace({ cards }: { cards: ICard[] }) {

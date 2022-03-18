@@ -1,6 +1,6 @@
 import React from 'react'
 import cn from 'classnames'
-import type { ISocialIcons } from '@components/icons'
+import type { ISocialIcons } from '@Components/icons'
 import s from './icon.module.css'
 
 const Medium = ({ size, variant, hasBg }: ISocialIcons) => {

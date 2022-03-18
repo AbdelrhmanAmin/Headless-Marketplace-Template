@@ -1,5 +1,5 @@
 import React from 'react'
-import type { ISocialIcons } from '@components/icons'
+import type { ISocialIcons } from '@Components/icons'
 import s from './icon.module.css'
 import cn from 'classnames'
 

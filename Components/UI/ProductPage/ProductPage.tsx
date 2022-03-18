@@ -1,5 +1,5 @@
 import React from 'react'
-import { Stack, ImageViewer } from '@components/ui'
+import { Stack, ImageViewer } from '@Components/UI'
 import { Coin } from 'components/icons'
 
 interface IProductPage {
