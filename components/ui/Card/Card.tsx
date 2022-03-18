@@ -59,16 +59,17 @@ const Card = ({ media, name, price, isLoading = false }: ICard) => {
               <h2 className={s.nftName}>{name}</h2>
             )}
           </Stack>
-          {price && (
-            <Stack>
-              <div className="flex items-center space-x-1">
-                <span className="text-gray-700">{price}</span>
-                <span className="h-4 w-4">
-                  <Coin />
-                </span>
-              </div>
-            </Stack>
-          )}
+
+          <Stack>
+            <div className="flex items-center space-x-1">
+              <span className="text-gray-700">
+                {price || Math.floor(Math.random() * 1000) + 1}
+              </span>
+              <span className="h-4 w-4">
+                <Coin />
+              </span>
+            </div>
+          </Stack>
         </div>
       </Stack>
     </div>

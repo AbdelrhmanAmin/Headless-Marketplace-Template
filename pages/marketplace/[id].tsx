@@ -15,27 +15,28 @@ interface PageContext {
   fallback?: boolean
 }
 export const getStaticPaths = async () => {
-  const result = await fetch(
-    `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/master`,
-    {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        query: `
+  const result = await fetch('https://rickandmortyapi.com/graphql', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      query: `
         query {
-          cardCollection {
-            items {
+          characters{
+            results{
               id
             }
           }
         }
+        
         `,
-      }),
-    }
-  )
+    }),
+  })
+
+  const { data } = await result.json()
+  const cards = data.characters.results
+
   const staticPaths: { params: { id: string } }[] = []
 
   if (!result.ok) {
@@ -43,8 +44,6 @@ export const getStaticPaths = async () => {
     return staticPaths
   }
 
-  const { data } = await result.json()
-  const cards = data.cardCollection.items
   cards.forEach(({ id }: ICard) =>
     staticPaths.push({ params: { id: `${id}` } })
   )
@@ -56,33 +55,34 @@ export const getStaticPaths = async () => {
 
 export const getStaticProps = async (context: PageContext) => {
   const { id } = context.params
-  const result = await fetch(
-    `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/master`,
-    {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        query: `  query Product($ID: Int = ${id}){
-          cardCollection(
-          where: {id: $ID}
-          ) {
-            items {
-              id
-              media: cardMedia {
-                url
-              }
-              name
-              price
-            }
+  const result = await fetch('https://rickandmortyapi.com/graphql', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      query: `
+      query ($ID:ID = ${id}) {
+        character(id: $ID) {
+          id
+          name
+          gender
+          media: image
+          origin{
+            name
+            dimension
           }
+          location{
+            name
+            dimension
+          }
+          species
+          status
         }
+      }      
       `,
-      }),
-    }
-  )
+    }),
+  })
 
   if (!result.ok) {
     console.error(result)
@@ -90,7 +90,7 @@ export const getStaticProps = async (context: PageContext) => {
   }
 
   const { data } = await result.json()
-  const card = data.cardCollection.items[0]
+  const card = data.character
 
   return {
     props: { card },

@@ -3,7 +3,7 @@ import { Stack, ImageViewer } from '@components/ui'
 import { Coin } from '@components/icons'
 
 interface IProductPage {
-  media: { url: string }
+  media: string
   name: string
   price: number
 }
@@ -14,7 +14,7 @@ const ProductPage = ({ media, name, price }: IProductPage) => {
       <div className="flex items-center justify-evenly">
         <div className="lg:w-5/12">
           <Stack>
-            <ImageViewer variant="Product" media={media.url} />
+            <ImageViewer variant="Product" media={media} />
           </Stack>
         </div>
         <div className="flex flex-col w-1/2 mt-12">
@@ -24,7 +24,9 @@ const ProductPage = ({ media, name, price }: IProductPage) => {
               <span className="w-9 h-9">
                 <Coin />
               </span>
-              <span className="text-5xl">{price}</span>
+              <span className="text-5xl">
+                {price || Math.floor(Math.random() * 1000) + 1}
+              </span>
             </div>
           </Stack>
           <Stack className="mt-14">

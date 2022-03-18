@@ -111,41 +111,6 @@ export default function Marketplace({ cards }: { cards: ICard[] }) {
 }
 
 export const getStaticProps = async () => {
-  // const result = await fetch(
-  //   `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/master`,
-  //   {
-  //     method: 'POST',
-  //     headers: {
-  //       Authorization: `Bearer ${process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN}`,
-  //       'Content-Type': 'application/json',
-  //     },
-  //     body: JSON.stringify({
-  //       query: `
-  //       query {
-  //         cardCollection {
-  //           items {
-  //             id
-  //             media: cardMedia{
-  //               url
-  //             }
-  //             name
-  //             price
-  //           }
-  //         }
-  //       }
-  //       `,
-  //     }),
-  //   }
-  // )
-
-  // if (!result.ok) {
-  //   console.error(result)
-  //   return {}
-  // }
-
-  // const { data } = await result.json()
-  // const cards = data.cardCollection.items
-
   const result = await fetch('https://rickandmortyapi.com/graphql', {
     method: 'POST',
     headers: {
