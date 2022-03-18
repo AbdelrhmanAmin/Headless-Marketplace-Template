@@ -1,6 +1,6 @@
-import { IconsQuery } from '@Components/icons'
+import { IconsQuery } from '@components/icons'
 import React from 'react'
-import { Stack, LinkItem } from '@Components/UI'
+import { Stack, LinkItem } from '@components/ui'
 
 const icons = [
   {

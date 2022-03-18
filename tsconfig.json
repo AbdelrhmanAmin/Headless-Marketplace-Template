@@ -16,8 +16,7 @@
     "incremental": true,
     "baseUrl": "./",
     "paths": {
-      "@Components/*": ["./Components/*"],
-      "@Interfaces": ["./Interfaces/index"],
+      "@components/*": ["components/*"],
       "@Pages/*": ["./Pages/*"],
       "@constants/*": ["./constants/*"],
     }

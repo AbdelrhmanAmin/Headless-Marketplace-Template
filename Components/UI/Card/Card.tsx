@@ -1,6 +1,6 @@
 import React from 'react'
-import { Stack, Badge } from '@Components/UI'
-import { Coin } from '@Components/icons'
+import { Stack, Badge } from '@components/ui'
+import { Coin } from '@components/icons'
 import s from './Card.module.css'
 import ImageViewer from '../ImageViewer'
 

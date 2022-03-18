@@ -1,6 +1,6 @@
 import React from 'react'
-import { Medium, Linkedin, Github, Email } from '@Components/icons'
-import type { ISocialIcons } from '@Components/icons'
+import { Medium, Linkedin, Github, Email } from '@components/icons'
+import type { ISocialIcons } from '@components/icons'
 
 interface IProps extends ISocialIcons {
   name: string
