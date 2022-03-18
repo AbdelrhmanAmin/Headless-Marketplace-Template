@@ -11,6 +11,9 @@ const Header = () => {
       <Container hasPaddingX className="flex">
         <div className="flex w-1/2 justify-start">
           <div className="flex space-x-4 text-xl font-medium">
+            <LinkItem slug='/'>
+              [LOGO]
+            </LinkItem>
             {navigation.map(({ slug, title }) => (
               <LinkItem
                 variant="ghost"
@@ -18,15 +21,7 @@ const Header = () => {
                 slug={slug}
                 key={slug}
               >
-                {slug === '/' ? (
-                  <div className="flex space-x-1">
-                    <span>🔥</span>
-                    <span>{title}</span>
-                    <span>🔥</span>
-                  </div>
-                ) : (
-                  title
-                )}
+                {title}
               </LinkItem>
             ))}
           </div>

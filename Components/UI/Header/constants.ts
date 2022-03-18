@@ -5,10 +5,4 @@ export interface NavigationInterface {
   title: string
 }
 
-export const navigation: NavigationInterface[] = [
-  {
-    slug: '/',
-    title: '[COOL_LOGO]',
-  },
-  ROUTES.MARKETPLACE,
-]
+export const navigation: NavigationInterface[] = [ROUTES.MARKETPLACE]
