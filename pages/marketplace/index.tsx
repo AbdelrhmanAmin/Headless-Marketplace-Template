@@ -7,7 +7,7 @@ export default function Marketplace({ cards }: { cards: ICard[] }) {
   const cardsRef = React.useRef(cards)
   const [, trigger] = React.useReducer((prev) => !prev, false)
   const lastCardRef = React.useRef(null)
-  const fetchMore = async () => {
+  const populateWithDummyCards = () => {
     const tmp = [...cardsRef.current]
     const startingIndex = tmp.length
     cardsRef.current.push(
@@ -22,6 +22,9 @@ export default function Marketplace({ cards }: { cards: ICard[] }) {
       })
     )
     trigger()
+    return startingIndex
+  }
+  const fetchAndHydrate = async (startingIndex: number) => {
     const result = await fetch('https://rickandmortyapi.com/graphql', {
       method: 'POST',
       headers: {
@@ -29,17 +32,17 @@ export default function Marketplace({ cards }: { cards: ICard[] }) {
       },
       body: JSON.stringify({
         query: `
-        query {
-          characters{
-            results{
-              id
-              name
-              media:image
+          query {
+            characters{
+              results{
+                id
+                name
+                media:image
+              }
             }
           }
-        }
-        
-        `,
+          
+          `,
       }),
     })
 
@@ -50,19 +53,18 @@ export default function Marketplace({ cards }: { cards: ICard[] }) {
 
     const { data } = await result.json()
     const cards = data.characters.results
-    setTimeout(() => {
-      for (let i = 0; i < 20; i++) {
-        cardsRef.current[startingIndex + i] = cards[i]
-      }
-      trigger()
-    }, 1500)
+    for (let i = 0; i < 20; i++) {
+      cardsRef.current[startingIndex + i] = cards[i]
+    }
+    trigger()
   }
   React.useEffect(() => {
     if (lastCardRef.current) {
       const observer = new IntersectionObserver(
         ([{ isIntersecting, target }]) => {
           if (isIntersecting) {
-            fetchMore()
+            const startingIndex = populateWithDummyCards()
+            setTimeout(() => fetchAndHydrate(startingIndex), 1000)
             observer.unobserve(target)
           }
         }

@@ -26,10 +26,10 @@ const Card = ({ media, name, price, isLoading = false }: ICard) => {
           <Badge variant="live" size="tiny">
             <div className="text-white font-bold h-3.5 w-24">
               {isLoading ? (
-                <div className="space-x-2 justify-center flex p-px pb-0.5 h-full w-full">
+                <div className="space-x-1.5 items-center justify-center flex h-full w-full">
                   {new Array(4).fill('').map((v, k) => (
                     <div
-                      className="w-3 h-full bg-gray-600 rounded-md animate-pulse"
+                      className="w-3 h-3 bg-gray-600 rounded-md animate-pulse"
                       key={k}
                     />
                   ))}
