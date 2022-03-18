@@ -1,6 +1,6 @@
 import React from 'react'
-import { Stack, Badge, ImageViewer } from 'sdf/UI'
-import { Coin } from 'sdf/icons'
+import { Stack, Badge, ImageViewer } from '@components/UI'
+import { Coin } from '@components/icons'
 import s from './Card.module.css'
 import generateEmojis from 'utils/generateEmojis'
 

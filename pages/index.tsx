@@ -1,4 +1,4 @@
-import { Container, SEO } from 'sdf/UI'
+import { Container, SEO } from '@components/UI'
 import React from 'react'
 
 const LandingPage = () => {

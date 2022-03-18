@@ -1,6 +1,6 @@
 import React from 'react'
-import { Stack, ImageViewer } from 'sdf/UI'
-import { Coin } from 'sdf/icons'
+import { Stack, ImageViewer } from '@components/UI'
+import { Coin } from '@components/icons'
 
 interface IProductPage {
   media: { url: string }

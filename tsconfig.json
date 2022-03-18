@@ -16,7 +16,7 @@
     "incremental": true,
     "baseUrl": ".",
     "paths": {
-      "@components/*": ["sdf/*"],
+      "@components/*": ["components/*"],
       "@constants/*": ["constants/*"],
     }
   },
