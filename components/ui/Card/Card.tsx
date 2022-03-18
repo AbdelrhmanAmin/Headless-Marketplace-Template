@@ -6,29 +6,46 @@ import generateEmojis from 'utils/generateEmojis'
 
 export interface ICard {
   id: number
-  media: {
-    url: string
-  }
+  media: string
   name: string
   price: number
+  isLoading?: boolean
 }
 
-const Card = ({ media: { url }, name, price }: ICard) => {
+const Card = ({ media, name, price, isLoading = false }: ICard) => {
   return (
     <div className={s.root}>
       <div className={s.nftImageContainer}>
-        <ImageViewer media={url} alt={name} variant="Marketplace" />
+        <ImageViewer
+          isLoading={isLoading}
+          media={media}
+          alt={name}
+          variant="Marketplace"
+        />
         <div className="top-3 right-4 absolute">
           <Badge variant="live" size="tiny">
-            <div className="flex space-x-1.5 px-0.5 min-w-[48px] text-white font-bold">
-              {generateEmojis(4).map((icon, i) => (
-                <span
-                  key={i}
-                  className="scale-100 hover:scale-150 duration-200 transition"
-                >
-                  {icon}
-                </span>
-              ))}
+            <div className="text-white font-bold">
+              {isLoading ? (
+                <div className="space-x-2 justify-center flex p-px h-4 w-24">
+                  {new Array(4).fill('').map((v, k) => (
+                    <div
+                      className="w-3.5 h-full bg-gray-600 rounded-md animate-pulse"
+                      key={k}
+                    />
+                  ))}
+                </div>
+              ) : (
+                <div className="flex space-x-1.5 px-0.5 justify-center w-24">
+                  {generateEmojis(4).map((icon, i) => (
+                    <span
+                      key={i}
+                      className="scale-100 hover:scale-150 duration-200 transition"
+                    >
+                      {icon}
+                    </span>
+                  ))}
+                </div>
+              )}
             </div>
           </Badge>
         </div>
@@ -36,16 +53,22 @@ const Card = ({ media: { url }, name, price }: ICard) => {
       <Stack className={s.cardBody}>
         <div className={s.cardDetails}>
           <Stack className="overflow-hidden">
-            <h2 className={s.nftName}>{name}</h2>
+            {isLoading ? (
+              <div className="w-full h-3.5 bg-gray-600 rounded-md animate-pulse mt-1" />
+            ) : (
+              <h2 className={s.nftName}>{name}</h2>
+            )}
           </Stack>
-          <Stack>
-            <div className="flex items-center space-x-1">
-              <span className="text-gray-700">{price}</span>
-              <span className="h-4 w-4">
-                <Coin />
-              </span>
-            </div>
-          </Stack>
+          {price && (
+            <Stack>
+              <div className="flex items-center space-x-1">
+                <span className="text-gray-700">{price}</span>
+                <span className="h-4 w-4">
+                  <Coin />
+                </span>
+              </div>
+            </Stack>
+          )}
         </div>
       </Stack>
     </div>
