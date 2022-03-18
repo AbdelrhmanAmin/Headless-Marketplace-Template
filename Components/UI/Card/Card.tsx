@@ -1,9 +1,8 @@
 import React from 'react'
-import { Stack, Badge } from '@components/ui'
+import { Stack, Badge, ImageViewer } from '@components/ui'
 import { Coin } from '@components/icons'
 import s from './Card.module.css'
-import ImageViewer from '../ImageViewer'
-
+import generateEmojis from 'utils/generateEmojis'
 export interface ICard {
   id: number
   media: {
@@ -21,7 +20,7 @@ const Card = ({ media: { url }, name, price }: ICard) => {
         <div className="top-3 right-4 absolute">
           <Badge variant="live" size="tiny">
             <div className="flex space-x-1.5 px-0.5 min-w-[48px] text-white font-bold">
-              {['🦁', '🐯', '🐺'].map((icon) => (
+              {generateEmojis(4).map((icon) => (
                 <span
                   key={icon}
                   className="scale-100 hover:scale-150 duration-200 transition"
