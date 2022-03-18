@@ -6,6 +6,7 @@ import ROUTES from '@constants/routes.json'
 export default function Marketplace({ cards }: { cards: ICard[] }) {
   const cardsRef = React.useRef(cards)
   const timerRef: any = React.useRef(null)
+  const currentPageRef = React.useRef(2)
   const [, trigger] = React.useReducer((prev) => !prev, false)
   const lastCardRef = React.useRef(null)
   const populateWithDummyCards = () => {
@@ -34,7 +35,7 @@ export default function Marketplace({ cards }: { cards: ICard[] }) {
       body: JSON.stringify({
         query: `
           query {
-            characters{
+            characters(page: ${currentPageRef.current}){
               results{
                 id
                 name
@@ -46,11 +47,11 @@ export default function Marketplace({ cards }: { cards: ICard[] }) {
           `,
       }),
     })
-
     if (!result.ok) {
       console.error(result)
       return {}
     }
+    currentPageRef.current += 1
 
     const { data } = await result.json()
     const cards = data.characters.results
@@ -119,7 +120,7 @@ export const getStaticProps = async () => {
     body: JSON.stringify({
       query: `
         query {
-          characters{
+          characters(page: 1){
             results{
               id
               name
