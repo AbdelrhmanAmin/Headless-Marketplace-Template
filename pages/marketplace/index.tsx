@@ -4,20 +4,72 @@ import type { ICard } from '@components/ui'
 import ROUTES from '@constants/routes.json'
 
 export default function Marketplace({ cards }: { cards: ICard[] }) {
-  const cardsRef = React.useRef(cards.slice(0, 8))
-  const [isLoading, setLoading] = React.useState(false)
+  const cardsRef = React.useRef(cards)
+  const [, trigger] = React.useReducer((prev) => !prev, false)
   const lastCardRef = React.useRef(null)
+  const fetchMore = async () => {
+    const tmp = [...cardsRef.current]
+    const startingIndex = tmp.length
+    cardsRef.current.push(
+      ...new Array(20).fill('').map((card, i) => {
+        card = {
+          id: startingIndex + i + 1,
+          name: 'Loading',
+          isLoading: true,
+          media: '',
+        }
+        return card
+      })
+    )
+    trigger()
+    const result = await fetch('https://rickandmortyapi.com/graphql', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        query: `
+        query {
+          characters{
+            results{
+              id
+              name
+              media:image
+            }
+          }
+        }
+        
+        `,
+      }),
+    })
+
+    if (!result.ok) {
+      console.error(result)
+      return {}
+    }
+
+    const { data } = await result.json()
+    const cards = data.characters.results
+    setTimeout(() => {
+      for (let i = 0; i < 20; i++) {
+        cardsRef.current[startingIndex + i] = cards[i]
+      }
+      trigger()
+    }, 1500)
+  }
   React.useEffect(() => {
     if (lastCardRef.current) {
-      const observer = new IntersectionObserver(([{ isIntersecting }]) => {
-        setLoading(isIntersecting)
-      })
+      const observer = new IntersectionObserver(
+        ([{ isIntersecting, target }]) => {
+          if (isIntersecting) {
+            fetchMore()
+            observer.unobserve(target)
+          }
+        }
+      )
       observer.observe(lastCardRef.current)
     }
   }, [lastCardRef.current])
-  React.useEffect(() => {
-    cardsRef.current.push(...cards.slice(0, 8))
-  }, [isLoading])
   return (
     <Container hasPaddingX hasPaddingY>
       <SEO title={'Marketplace'} />
@@ -47,32 +99,61 @@ export default function Marketplace({ cards }: { cards: ICard[] }) {
 }
 
 export const getStaticProps = async () => {
-  const result = await fetch(
-    `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/master`,
-    {
-      method: 'POST',
-      headers: {
-        Authorization: `Bearer ${process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN}`,
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        query: `
+  // const result = await fetch(
+  //   `https://graphql.contentful.com/content/v1/spaces/${process.env.CONTENTFUL_SPACE_ID}/environments/master`,
+  //   {
+  //     method: 'POST',
+  //     headers: {
+  //       Authorization: `Bearer ${process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN}`,
+  //       'Content-Type': 'application/json',
+  //     },
+  //     body: JSON.stringify({
+  //       query: `
+  //       query {
+  //         cardCollection {
+  //           items {
+  //             id
+  //             media: cardMedia{
+  //               url
+  //             }
+  //             name
+  //             price
+  //           }
+  //         }
+  //       }
+  //       `,
+  //     }),
+  //   }
+  // )
+
+  // if (!result.ok) {
+  //   console.error(result)
+  //   return {}
+  // }
+
+  // const { data } = await result.json()
+  // const cards = data.cardCollection.items
+
+  const result = await fetch('https://rickandmortyapi.com/graphql', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      query: `
         query {
-          cardCollection {
-            items {
+          characters{
+            results{
               id
-              media: cardMedia{
-                url
-              }
               name
-              price
+              media:image
             }
           }
         }
+        
         `,
-      }),
-    }
-  )
+    }),
+  })
 
   if (!result.ok) {
     console.error(result)
@@ -80,7 +161,7 @@ export const getStaticProps = async () => {
   }
 
   const { data } = await result.json()
-  const cards = data.cardCollection.items
+  const cards = data.characters.results
 
   return {
     props: { cards },
