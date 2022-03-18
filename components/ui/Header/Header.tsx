@@ -1,5 +1,5 @@
 import React from 'react'
-import { LinkItem, Container } from '@components/UI'
+import { LinkItem, Container } from '@components/ui'
 import { useRouter } from 'next/router'
 import { navigation } from './constants'
 
