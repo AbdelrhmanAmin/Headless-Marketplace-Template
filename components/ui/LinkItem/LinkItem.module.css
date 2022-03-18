@@ -1,0 +1,37 @@
+.root {
+  @apply relative inline-flex h-full
+  w-full cursor-pointer items-center
+  justify-center
+  rounded-md border
+  border-transparent py-1
+  px-1.5
+  text-center
+  tracking-wide
+  transition-colors duration-300 ease-in-out;
+}
+
+.primary {
+  @apply bg-yellow-600 hover:bg-yellow-400
+  text-white hover:text-yellow-100
+  transition-colors duration-500;
+}
+
+.ghost {
+  @apply bg-transparent 
+  text-white
+  shadow-none;
+}
+
+.ghost:hover {
+  @apply bg-gray-900;
+}
+
+.ghost:focus {
+  @apply bg-gray-600 text-white
+  outline-none;
+}
+
+.active {
+  @apply bg-gray-900 text-yellow-50
+  outline-none;
+}
