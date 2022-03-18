@@ -11,7 +11,8 @@ There is so much work to do, however, the structure is presumably done.
 - NextJS
 - TypeScript
 - Tailwind
-- Contentful CMS
+- ~~Contentful CMS~~
+- Rick and morty API
 
 
 ## Demo
