@@ -17,6 +17,18 @@ const Card = ({ media, name, price, isLoading = false }: ICard) => {
     () => Math.floor(Math.random() * 1000) + 1,
     []
   )
+  const memoizedBadge = React.useMemo(
+    () =>
+      generateEmojis(4).map((icon, i) => (
+        <span
+          key={i}
+          className="scale-100 hover:scale-150 duration-200 transition"
+        >
+          {icon}
+        </span>
+      )),
+    []
+  )
   return (
     <div className={s.root}>
       <div className={s.nftImageContainer}>
@@ -41,14 +53,7 @@ const Card = ({ media, name, price, isLoading = false }: ICard) => {
                 </div>
               ) : (
                 <div className="flex space-x-1.5 px-0.5 justify-center h-full w-full">
-                  {generateEmojis(4).map((icon, i) => (
-                    <span
-                      key={i}
-                      className="scale-100 hover:scale-150 duration-200 transition"
-                    >
-                      {icon}
-                    </span>
-                  ))}
+                  {memoizedBadge}
                 </div>
               )}
             </div>
