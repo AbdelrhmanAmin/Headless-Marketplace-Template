@@ -10,6 +10,7 @@ interface IProductDetails {
   origin: { name: string }
   location: { name: string }
   species: string
+  gender: string
 }
 
 const ProductDetails = ({ details }: { details: IProductDetails }) => {
@@ -118,12 +119,14 @@ const ProductPage = ({
   price,
   status,
   id,
+  gender,
   origin,
   location,
   species,
 }: IProductPage) => {
   const details: IProductDetails = {
     id,
+    gender,
     origin,
     location,
     species,
