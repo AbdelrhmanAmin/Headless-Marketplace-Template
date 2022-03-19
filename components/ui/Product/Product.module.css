@@ -1,0 +1,60 @@
+.container {
+  @apply flex flex-col lg:flex-row
+  items-center justify-evenly;
+}
+
+.leftColumn {
+  @apply sm:w-[520px] lg:w-5/12;
+}
+
+.rightColumn {
+  @apply flex flex-col
+  sm:w-[520px] lg:w-1/2;
+}
+
+.desktop {
+  @apply hidden lg:flex;
+}
+
+.mobile {
+  @apply flex lg:hidden;
+}
+
+.productHeader {
+  @apply flex-col space-y-3 text-white;
+}
+
+.productHeader > h4 {
+  @apply text-4xl lg:text-7xl;
+}
+
+.productHeader .priceContainer {
+  @apply flex items-center w-fit
+  space-x-2 py-1 px-4
+  bg-yellow-600
+  rounded-md shadow-md;
+}
+
+.priceContainer > span:first-of-type {
+  @apply w-5 lg:w-9 
+  h-5 lg:h-9;
+}
+
+.priceContainer > span:last-of-type {
+  @apply text-xl lg:text-5xl;
+}
+
+.productDescription {
+  @apply rounded-md overflow-hidden
+  border-2 border-yellow-700
+  bg-yellow-600;
+}
+
+.productDescription > div:first-of-type {
+  @apply pl-5 py-2 text-xl text-white;
+}
+
+.productDescription > div:last-of-type {
+  @apply overflow-y-auto max-h-52 h-52
+  p-5 pt-2 bg-white;
+}

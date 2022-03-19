@@ -1,13 +1,13 @@
 import React from 'react'
-import { ProductPage, Container, TitleAndMeta } from '@components/ui'
+import { Product, Container, TitleAndMeta } from '@components/ui'
 import type { ICard } from '@components/ui'
 
-const Product = ({ card }: { card: ICard }) => {
+const ProductPage = ({ card }: { card: ICard }) => {
   return (
     <>
       <TitleAndMeta title={card.name} />
       <Container hasPaddingX hasPaddingY>
-        <ProductPage {...card} />
+        <Product {...card} />
       </Container>
     </>
   )
@@ -99,4 +99,4 @@ export const getStaticProps = async (context: PageContext) => {
     props: { card },
   }
 }
-export default Product
+export default ProductPage
