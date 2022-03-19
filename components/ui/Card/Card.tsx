@@ -54,21 +54,28 @@ const Card = ({ media, name, price, isLoading = false }: ICard) => {
         <div className={s.cardDetails}>
           <Stack className="overflow-hidden">
             {isLoading ? (
-              <div className="w-full h-3.5 bg-gray-600 rounded-md animate-pulse mt-1" />
+              <div className="w-full h-3.5 bg-gray-600 rounded-md animate-pulse mt-1 pr-8" />
             ) : (
               <h2 className={s.nftName}>{name}</h2>
             )}
           </Stack>
 
           <Stack>
-            <div className="flex items-center space-x-1">
-              <span className="text-gray-700">
-                {price || Math.floor(Math.random() * 1000) + 1}
-              </span>
-              <span className="h-4 w-4">
-                <Coin />
-              </span>
-            </div>
+            {isLoading ? (
+              <div className="flex w-full items-center space-x-1 pl-4">
+                <div className="w-full h-3.5 bg-gray-600 rounded-md animate-pulse mt-1" />
+                <div className="w-5 h-3.5 bg-gray-600 rounded-md animate-pulse mt-1" />
+              </div>
+            ) : (
+              <div className="flex items-center space-x-1">
+                <span className="text-gray-700">
+                  {price || Math.floor(Math.random() * 1000) + 1}
+                </span>
+                <span className="h-4 w-4">
+                  <Coin />
+                </span>
+              </div>
+            )}
           </Stack>
         </div>
       </Stack>
