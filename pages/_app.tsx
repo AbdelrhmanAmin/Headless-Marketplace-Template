@@ -1,16 +1,12 @@
-import '../styles/globals.css'
 import type { AppProps } from 'next/app'
-import { Header, Footer } from '@components/ui'
+import { Layout } from '@components/connectors'
+import '../styles/globals.css'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <div className="bg-yellow-400">
-      <Header />
-      <main className="min-h-screen">
-        <Component {...pageProps} />
-      </main>
-      <Footer />
-    </div>
+    <Layout>
+      <Component {...pageProps} />
+    </Layout>
   )
 }
 
