@@ -12,6 +12,7 @@ interface IProductPage {
 }
 
 const ProductPage = ({ media, name, price, status }: IProductPage) => {
+  const memoizedPrice = React.useMemo(() => Math.floor(Math.random() * 1000) + 1, [])
   const { openFullPreview } = useUI()
   return (
     <section>
@@ -54,7 +55,7 @@ const ProductPage = ({ media, name, price, status }: IProductPage) => {
                 <Coin />
               </span>
               <span className="text-5xl">
-                {price || Math.floor(Math.random() * 1000) + 1}
+                {price || memoizedPrice}
               </span>
             </div>
           </Stack>

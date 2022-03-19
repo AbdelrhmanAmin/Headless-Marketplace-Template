@@ -1,12 +1,15 @@
 import React from 'react'
-import { ProductPage, Container } from '@components/ui'
+import { ProductPage, Container, TitleAndMeta } from '@components/ui'
 import type { ICard } from '@components/ui'
 
 const Product = ({ card }: { card: ICard }) => {
   return (
-    <Container hasPaddingX hasPaddingY>
-      <ProductPage {...card} />
-    </Container>
+    <>
+      <TitleAndMeta title={card.name} />
+      <Container hasPaddingX hasPaddingY>
+        <ProductPage {...card} />
+      </Container>
+    </>
   )
 }
 

@@ -13,6 +13,10 @@ export interface ICard {
 }
 
 const Card = ({ media, name, price, isLoading = false }: ICard) => {
+  const memoizedPrice = React.useMemo(
+    () => Math.floor(Math.random() * 1000) + 1,
+    []
+  )
   return (
     <div className={s.root}>
       <div className={s.nftImageContainer}>
@@ -69,9 +73,7 @@ const Card = ({ media, name, price, isLoading = false }: ICard) => {
               </div>
             ) : (
               <div className="flex items-center space-x-1">
-                <span className="text-gray-700">
-                  {price || Math.floor(Math.random() * 1000) + 1}
-                </span>
+                <span className="text-gray-700">{price || memoizedPrice}</span>
                 <span className="h-4 w-4">
                   <Coin />
                 </span>

@@ -1,4 +1,4 @@
-import { Container, SEO } from '@components/ui'
+import { Container, TitleAndMeta } from '@components/ui'
 import React from 'react'
 
 const LandingPage = () => {

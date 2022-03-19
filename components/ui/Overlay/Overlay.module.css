@@ -1,13 +1,14 @@
 .root {
   @apply fixed inset-0 z-10
-  bg-gray-700 bg-opacity-75 transition-opacity
+  bg-gray-700
+  bg-opacity-75 transition-opacity duration-500
   flex justify-center items-center
   select-none;
   backdrop-filter: blur(2px);
 }
 
 .show {
-  @apply opacity-100 visible;
+  @apply opacity-100;
 }
 
 .hide {
