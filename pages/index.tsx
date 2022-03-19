@@ -4,7 +4,7 @@ import React from 'react'
 const LandingPage = () => {
   return (
     <Container hasPaddingX>
-      <SEO title="[name]" />
+      <TitleAndMeta title="[name]" />
       <img src="/placeholder.jpg" alt="hi" className='w-full h-screen' />
     </Container>
   )

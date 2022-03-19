@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import React from 'react'
 
-const SEO = ({ title }: { title: string }) => {
+const TitleAndMeta = ({ title }: { title: string }) => {
   return (
     <Head>
       <title>{title}</title>
@@ -10,4 +10,4 @@ const SEO = ({ title }: { title: string }) => {
   )
 }
 
-export default SEO
+export default TitleAndMeta

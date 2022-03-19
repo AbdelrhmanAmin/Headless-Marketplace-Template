@@ -85,7 +85,7 @@ export default function Marketplace({ cards }: { cards: ICard[] }) {
   }, [])
   return (
     <Container hasPaddingX hasPaddingY>
-      <SEO title={'Marketplace'} />
+      <TitleAndMeta title={'Marketplace'} />
       <div>
         <h1 className="text-center text-4xl sm:text-7xl font-semibold text-gray-800">
           [Marketplace]
