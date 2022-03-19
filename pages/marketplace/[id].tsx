@@ -73,11 +73,9 @@ export const getStaticProps = async (context: PageContext) => {
           media: image
           origin{
             name
-            dimension
           }
           location{
             name
-            dimension
           }
           species
           status

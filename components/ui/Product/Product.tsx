@@ -6,32 +6,27 @@ import cn from 'classnames'
 import s from './Product.module.css'
 
 interface IProductDetails {
-  id?: number
-  origin?: { name: string }
-  location?: { name: string }
-  species?: string
-}
-export interface IProductPage {
-  media: string
-  name: string
-  price: number
-  status?: string
-  className?: string
+  id: number
+  origin: { name: string }
+  location: { name: string }
+  species: string
 }
 
-const ProductDetails = ({ details }) => {
+const ProductDetails = ({ details }: { details: IProductDetails }) => {
   return (
     <div className={s.productBox}>
       <div>
         <strong>📒 Details</strong>
       </div>
       <ul>
-        {details.map(({ key, value }) => (
-          <li className='flex justify-between'>
-            <span>{key}</span>
-            <span>{value}</span>
-          </li>
-        ))}
+        {Object.entries(details).map(([key, value]) => {
+          return (
+            <li className="flex justify-between" key={key}>
+              <span>{key}</span>
+              <span className="text-gray-700">{value.name || value}</span>
+            </li>
+          )
+        })}
       </ul>
     </div>
   )
@@ -55,7 +50,7 @@ const ProductDescription = () => {
 }
 
 interface IProductHeader
-  extends Omit<IProductPage, 'media' | 'status' | 'details'> {
+  extends Pick<IProductPage, 'price' | 'name' | 'className'> {
   screen: 'desktop' | 'mobile'
 }
 const ProductHeader = ({ price, name, screen, className }: IProductHeader) => {
@@ -79,7 +74,7 @@ const ProductHeader = ({ price, name, screen, className }: IProductHeader) => {
 const ProductPreview = ({
   media,
   status,
-}: Omit<IProductPage, 'name' | 'price' | 'details'>) => {
+}: Pick<IProductPage, 'media' | 'status' | 'className'>) => {
   const { openFullPreview } = useUI()
   return (
     <Stack className="rounded-lg shadow-lg overflow-hidden bg-yellow-800">
@@ -109,6 +104,14 @@ const ProductPreview = ({
   )
 }
 
+export interface IProductPage extends IProductDetails {
+  media: string
+  name: string
+  price: number
+  status?: string
+  className?: string
+}
+
 const ProductPage = ({
   media,
   name,
@@ -118,13 +121,14 @@ const ProductPage = ({
   origin,
   location,
   species,
-}: IProductPage & IProductDetails) => {
-  const details = [
-    { key: 'id', value: id },
-    { key: 'origin', value: origin?.name },
-    { key: 'location', value: location?.name },
-    { key: 'species', value: species },
-  ]
+}: IProductPage) => {
+  const details: IProductDetails = {
+    id,
+    origin,
+    location,
+    species,
+  }
+
   return (
     <section className="space-y-4">
       <div className={s.container}>
