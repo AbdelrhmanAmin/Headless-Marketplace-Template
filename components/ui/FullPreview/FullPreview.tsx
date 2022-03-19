@@ -1,7 +1,7 @@
 import React from 'react'
 import Image from 'next/image'
 import cn from 'classnames'
-import { useUI } from '@components/ui'
+import { useUI } from '@state'
 import s from './FullPreview.module.css'
 
 interface IProps {
