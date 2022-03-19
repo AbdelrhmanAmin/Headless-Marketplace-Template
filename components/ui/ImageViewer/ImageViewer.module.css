@@ -3,7 +3,3 @@
   flex items-center justify-center
   overflow-hidden;
 }
-
-.root img {
-  @apply rounded-md;
-}

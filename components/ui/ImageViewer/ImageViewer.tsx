@@ -22,8 +22,8 @@ const Variants: {
     objectFit: 'cover',
   },
   Product: {
-    width: '508',
-    height: '508',
+    width: '520',
+    height: '520',
     layout: 'intrinsic',
     objectFit: 'fill',
   },
@@ -38,16 +38,16 @@ interface IProps {
 }
 
 const ImageViewer = ({ media, className, alt, variant, isLoading }: IProps) => {
-  const rootClass = cn(s.root, className)
+  const rootClass = cn(s.root)
   const img = Variants[variant]
   return (
     <div className={rootClass}>
       {isLoading ? (
-        <div className='py-2 overflow-hidden w-full h-full'>
+        <div className="py-2 overflow-hidden w-full h-full">
           <div className="h-full w-full bg-gray-600 rounded-md animate-pulse" />
         </div>
       ) : (
-        <Image src={media} alt={alt} priority {...img} />
+        <Image src={media} alt={alt} priority {...img} className={className} />
       )}
     </div>
   )
