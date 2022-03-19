@@ -12,14 +12,19 @@ interface IProductPage {
 }
 
 const ProductPage = ({ media, name, price, status }: IProductPage) => {
-  const memoizedPrice = React.useMemo(() => Math.floor(Math.random() * 1000) + 1, [])
+  const memoizedPrice = React.useMemo(
+    () => Math.floor(Math.random() * 1000) + 1,
+    []
+  )
   const { openFullPreview } = useUI()
   return (
     <section>
       <div className="flex items-center justify-evenly">
         <div className="lg:w-5/12">
           <Stack className="rounded-lg shadow-lg overflow-hidden bg-yellow-800">
-            <ImageViewer variant="Product" media={media} />
+            <div role="button" onClick={() => openFullPreview(media)}>
+              <ImageViewer variant="Product" media={media} />
+            </div>
             <div className="flex items-center justify-between text-white bg-yellow-800 p-3">
               <p>
                 <span>Status: </span>
@@ -27,11 +32,7 @@ const ProductPage = ({ media, name, price, status }: IProductPage) => {
                   {status}
                 </span>
               </p>
-              <div
-                role="button"
-                aria-describedby="open_fullscreen"
-                onClick={() => openFullPreview(media)}
-              >
+              <div role="button" onClick={() => openFullPreview(media)}>
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="20"
@@ -54,9 +55,7 @@ const ProductPage = ({ media, name, price, status }: IProductPage) => {
               <span className="w-9 h-9">
                 <Coin />
               </span>
-              <span className="text-5xl">
-                {price || memoizedPrice}
-              </span>
+              <span className="text-5xl">{price || memoizedPrice}</span>
             </div>
           </Stack>
           <Stack className="mt-14">

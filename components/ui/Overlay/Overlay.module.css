@@ -1,7 +1,7 @@
 .root {
   @apply fixed inset-0 z-10
   bg-gray-700
-  bg-opacity-75 transition-all duration-500
+  bg-opacity-75 transition-all duration-300
   flex justify-center items-center
   select-none;
   backdrop-filter: blur(2px);
