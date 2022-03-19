@@ -2,31 +2,19 @@ import React from 'react'
 import { Stack, Badge, ImageViewer } from '@components/ui'
 import { Coin } from '@components/icons'
 import s from './Card.module.css'
-import generateEmojis from 'utils/generateEmojis'
 
 export interface ICard {
   id: number
   media: string
   name: string
   price: number
+  status: string
   isLoading?: boolean
 }
 
-const Card = ({ media, name, price, isLoading = false }: ICard) => {
+const Card = ({ media, name, price, status, isLoading = false }: ICard) => {
   const memoizedPrice = React.useMemo(
     () => Math.floor(Math.random() * 1000) + 1,
-    []
-  )
-  const memoizedBadge = React.useMemo(
-    () =>
-      generateEmojis(4).map((icon, i) => (
-        <span
-          key={i}
-          className="scale-100 hover:scale-150 duration-200 transition"
-        >
-          {icon}
-        </span>
-      )),
     []
   )
   return (
@@ -41,20 +29,13 @@ const Card = ({ media, name, price, isLoading = false }: ICard) => {
         />
         <div className="top-3 right-4 absolute">
           <Badge variant="live" size="tiny">
-            <div className="text-white font-bold h-3.5 w-24">
+            <div className="text-white font-bold h-3.5 w-12">
               {isLoading ? (
-                <div className="space-x-1.5 items-center justify-center flex h-full w-full">
-                  {new Array(4).fill('').map((v, k) => (
-                    <div
-                      className="w-3 h-3 bg-gray-600 rounded-md animate-pulse"
-                      key={k}
-                    />
-                  ))}
+                <div className="items-center justify-center flex h-full w-full">
+                  <div className="w-16 h-2 bg-gray-600 rounded-full animate-pulse" />
                 </div>
               ) : (
-                <div className="flex space-x-1.5 px-0.5 justify-center h-full w-full">
-                  {memoizedBadge}
-                </div>
+                <span>{status}</span>
               )}
             </div>
           </Badge>

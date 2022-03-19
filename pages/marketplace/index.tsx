@@ -129,6 +129,7 @@ export const getStaticProps = async () => {
               id
               name
               media:image
+              status
             }
           }
         }
