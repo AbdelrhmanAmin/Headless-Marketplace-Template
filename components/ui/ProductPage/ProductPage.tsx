@@ -15,23 +15,12 @@ const ProductPage = ({ media, name, price, status }: IProductPage) => {
     <section>
       <div className="flex items-center justify-evenly">
         <div className="lg:w-5/12">
-          <Stack className="rounded-md bg-slate-800 justify-end">
-            <ImageViewer
-              className="rounded-t-md"
-              variant="Product"
-              media={media}
-            />
-            <div className="flex items-center justify-between text-white p-3">
+          <Stack className="rounded-lg shadow-lg overflow-hidden bg-yellow-800">
+            <ImageViewer variant="Product" media={media} />
+            <div className="flex items-center justify-between text-white bg-yellow-800 p-3">
               <p>
                 <span>Status: </span>
-                <span
-                  className={cn(
-                    'font-semibold',
-                    status?.toLowerCase() === 'alive'
-                      ? 'text-green-600'
-                      : 'text-yellow-400'
-                  )}
-                >
+                <span className={cn('font-semibold text-yellow-400')}>
                   {status}
                 </span>
               </p>
@@ -42,6 +31,7 @@ const ProductPage = ({ media, name, price, status }: IProductPage) => {
                   height="20"
                   fill="currentColor"
                   stroke="currentColor"
+                  strokeWidth={1.3}
                   viewBox="0 0 16 16"
                 >
                   <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0v-4A1.5 1.5 0 0 1 1.5 0h4a.5.5 0 0 1 0 1h-4zM10 .5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 16 1.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5zM.5 10a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 0 14.5v-4a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v4a1.5 1.5 0 0 1-1.5 1.5h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5z" />
@@ -50,7 +40,7 @@ const ProductPage = ({ media, name, price, status }: IProductPage) => {
             </div>
           </Stack>
         </div>
-        <div className="flex flex-col w-1/2 mt-12">
+        <div className="flex flex-col w-1/2">
           <Stack className="space-y-3 text-white">
             <h3 className="text-7xl">{name}</h3>
             <div className="flex items-center space-x-2 bg-yellow-600 py-1 px-4 w-fit rounded-md shadow-md">

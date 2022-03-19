@@ -18,7 +18,7 @@ const Card = ({ media, name, price, isLoading = false }: ICard) => {
       <div className={s.nftImageContainer}>
         <ImageViewer
           isLoading={isLoading}
-          className="rounded-md"
+          childClassName="rounded-md"
           media={media}
           alt={name}
           variant="Marketplace"
