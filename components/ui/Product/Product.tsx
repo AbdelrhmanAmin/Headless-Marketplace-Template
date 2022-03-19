@@ -1,10 +1,19 @@
 import React from 'react'
-import { Stack, ImageViewer } from '@components/ui'
+import { Stack, ImageViewer, Button } from '@components/ui'
 import { Coin } from '@components/icons'
 import { useUI } from '@state'
 import cn from 'classnames'
 import s from './Product.module.css'
 
+const ProductPayment = () => {
+  return (
+    <div className="border-yellow-700 bg-yellow-600 p-8">
+      <div className='w-fit'>
+        <Button>💵 Buy Now</Button>
+      </div>
+    </div>
+  )
+}
 interface IProductDetails {
   id: number
   origin: { name: string }
@@ -146,6 +155,7 @@ const ProductPage = ({
         </div>
         <div className={s.rightColumn}>
           <ProductHeader name={name} price={price} screen="desktop" />
+          <ProductPayment />
         </div>
       </div>
       <div className={s.container}>
