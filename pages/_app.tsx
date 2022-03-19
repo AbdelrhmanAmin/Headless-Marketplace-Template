@@ -4,9 +4,9 @@ import { Header, Footer } from '@components/ui'
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (
-    <div className="bg-yellow-400 min-h-screen">
+    <div className="bg-yellow-400">
       <Header />
-      <main className="min-h-full">
+      <main className="min-h-screen">
         <Component {...pageProps} />
       </main>
       <Footer />
