@@ -1,13 +1,13 @@
 import React from 'react'
 import { Product, Container, TitleAndMeta } from '@components/ui'
-import type { ICard } from '@components/ui'
+import type { ICard, IProductPage } from '@components/ui'
 
-const ProductPage = ({ card }: { card: ICard }) => {
+const ProductPage = ({ product }: { product: IProductPage }) => {
   return (
     <>
-      <TitleAndMeta title={card.name} />
+      <TitleAndMeta title={product.name} />
       <Container hasPaddingX hasPaddingY>
-        <Product {...card} />
+        <Product {...product} />
       </Container>
     </>
   )
@@ -93,10 +93,10 @@ export const getStaticProps = async (context: PageContext) => {
   }
 
   const { data } = await result.json()
-  const card = data.character
+  const product = data.character
 
   return {
-    props: { card },
+    props: { product },
   }
 }
 export default ProductPage

@@ -1,6 +1,6 @@
 .container {
   @apply flex flex-col lg:flex-row
-  items-center justify-evenly;
+  justify-evenly;
 }
 
 .leftColumn {
@@ -21,7 +21,7 @@
 }
 
 .productHeader {
-  @apply flex-col space-y-3 text-white;
+  @apply flex-col justify-start space-y-3 text-white;
 }
 
 .productHeader > h4 {
@@ -44,17 +44,25 @@
   @apply text-xl lg:text-5xl;
 }
 
-.productDescription {
+.productBox {
   @apply rounded-md overflow-hidden
   border-2 border-yellow-700
   bg-yellow-600;
 }
 
-.productDescription > div:first-of-type {
+.productBox > div:first-of-type {
   @apply pl-5 py-2 text-xl text-white;
 }
 
-.productDescription > div:last-of-type {
-  @apply overflow-y-auto max-h-52 h-52
-  p-5 pt-2 bg-white;
+.maxHeight {
+  @apply overflow-y-auto max-h-52 min-h-[135px];
+}
+
+.productBox > div:last-of-type:not(:first-of-type),
+.productBox > ul {
+  @apply p-5 pt-2 bg-white;
+}
+
+.productBox > ul > li {
+  @apply border-b pb-0.5
 }

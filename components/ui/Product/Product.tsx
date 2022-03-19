@@ -5,7 +5,13 @@ import { useUI } from '@state'
 import cn from 'classnames'
 import s from './Product.module.css'
 
-interface IProductPage {
+interface IProductDetails {
+  id?: number
+  origin?: { name: string }
+  location?: { name: string }
+  species?: string
+}
+export interface IProductPage {
   media: string
   name: string
   price: number
@@ -13,13 +19,31 @@ interface IProductPage {
   className?: string
 }
 
+const ProductDetails = ({ details }) => {
+  return (
+    <div className={s.productBox}>
+      <div>
+        <strong>📒 Details</strong>
+      </div>
+      <ul>
+        {details.map(({ key, value }) => (
+          <li className='flex justify-between'>
+            <span>{key}</span>
+            <span>{value}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  )
+}
+
 const ProductDescription = () => {
   return (
-    <div className={s.productDescription}>
+    <div className={s.productBox}>
       <div>
         <strong>📒 Description</strong>
       </div>
-      <div>
+      <div className={s.maxHeight}>
         <p>
           Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa
           mollitia quos, harum, nulla quasi expedita quo architecto est aliquam
@@ -30,16 +54,17 @@ const ProductDescription = () => {
   )
 }
 
-interface IProductHeader extends Omit<IProductPage, 'media' | 'status'> {
+interface IProductHeader
+  extends Omit<IProductPage, 'media' | 'status' | 'details'> {
   screen: 'desktop' | 'mobile'
 }
-const ProductHeader = ({ price, name, screen }: IProductHeader) => {
+const ProductHeader = ({ price, name, screen, className }: IProductHeader) => {
   const memoizedPrice = React.useMemo(
     () => Math.floor(Math.random() * 1000) + 1,
     []
   )
   return (
-    <div className={cn(s.productHeader, screen && s[screen])}>
+    <div className={cn(s.productHeader, screen && s[screen], className)}>
       <h4>{name}</h4>
       <div className={s.priceContainer}>
         <span>
@@ -54,7 +79,7 @@ const ProductHeader = ({ price, name, screen }: IProductHeader) => {
 const ProductPreview = ({
   media,
   status,
-}: Omit<IProductPage, 'name' | 'price'>) => {
+}: Omit<IProductPage, 'name' | 'price' | 'details'>) => {
   const { openFullPreview } = useUI()
   return (
     <Stack className="rounded-lg shadow-lg overflow-hidden bg-yellow-800">
@@ -84,19 +109,44 @@ const ProductPreview = ({
   )
 }
 
-const ProductPage = ({ media, name, price, status }: IProductPage) => {
+const ProductPage = ({
+  media,
+  name,
+  price,
+  status,
+  id,
+  origin,
+  location,
+  species,
+}: IProductPage & IProductDetails) => {
+  const details = [
+    { key: 'id', value: id },
+    { key: 'origin', value: origin?.name },
+    { key: 'location', value: location?.name },
+    { key: 'species', value: species },
+  ]
   return (
-    <section>
+    <section className="space-y-4">
       <div className={s.container}>
         <div className={s.leftColumn}>
-          <ProductHeader name={name} price={price} screen="mobile" />
+          <ProductHeader
+            name={name}
+            price={price}
+            screen="mobile"
+            className="mb-4"
+          />
           <ProductPreview media={media} status={status} />
         </div>
         <div className={s.rightColumn}>
           <ProductHeader name={name} price={price} screen="desktop" />
-          <Stack className="mt-14">
-            <ProductDescription />
-          </Stack>
+        </div>
+      </div>
+      <div className={s.container}>
+        <div className={s.leftColumn}>
+          <ProductDetails details={details} />
+        </div>
+        <div className={s.rightColumn}>
+          <ProductDescription />
         </div>
       </div>
     </section>
