@@ -36,7 +36,7 @@ const FullPreview = ({ media, isOpen }: IProps) => {
       className={cn(isOpen ? s.root : 'hidden')}
       role="button"
       tabIndex={0}
-      onKeyDown={(e) => handleFullPreview(e)}
+      onKeyDown={handleFullPreview}
       onClick={closeFullPreview}
     >
       <Image

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Header, Footer, FullPreview, Overlay } from '@components/ui'
-import { UIProvider, useUI } from '@state'
+import { useUI } from '@state'
 
 interface LayoutProps {
   children: React.ReactNode
@@ -9,7 +9,7 @@ interface LayoutProps {
 const Layout = ({ children }: LayoutProps) => {
   const { isOverlayOpen, isPreviewOpen, previewImage, resetAll } = useUI()
   return (
-    <UIProvider>
+    <>
       <Overlay isOpen={isOverlayOpen} onClick={resetAll}>
         <FullPreview media={previewImage} isOpen={isPreviewOpen} />
       </Overlay>
@@ -18,7 +18,7 @@ const Layout = ({ children }: LayoutProps) => {
         <main className="min-h-screen">{children}</main>
         <Footer />
       </div>
-    </UIProvider>
+    </>
   )
 }
 

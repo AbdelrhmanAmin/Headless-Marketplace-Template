@@ -1,6 +1,7 @@
 import React from 'react'
 import { Stack, ImageViewer } from '@components/ui'
 import { Coin } from '@components/icons'
+import { useUI } from '@state'
 import cn from 'classnames'
 
 interface IProductPage {
@@ -11,6 +12,7 @@ interface IProductPage {
 }
 
 const ProductPage = ({ media, name, price, status }: IProductPage) => {
+  const { openFullPreview } = useUI()
   return (
     <section>
       <div className="flex items-center justify-evenly">
@@ -24,7 +26,11 @@ const ProductPage = ({ media, name, price, status }: IProductPage) => {
                   {status}
                 </span>
               </p>
-              <div role="button" aria-describedby="open_fullscreen">
+              <div
+                role="button"
+                aria-describedby="open_fullscreen"
+                onClick={() => openFullPreview(media)}
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="20"

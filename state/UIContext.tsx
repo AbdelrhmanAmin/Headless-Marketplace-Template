@@ -19,7 +19,7 @@ const initialState: UIContextStateI = {
   setOverlayOpen: () => {},
   // FullPreview
   isPreviewOpen: false,
-  previewImage: '',
+  previewImage: '/',
   openFullPreview: () => {},
   closeFullPreview: () => {},
   resetAll: () => {},
@@ -39,7 +39,7 @@ const UIProvider = ({ children }: UIProviderProps) => {
 
   // Image FullPreview
   const [isPreviewOpen, setPreviewOpen] = React.useState(false)
-  const [previewImage, setPreviewImage] = React.useState('')
+  const [previewImage, setPreviewImage] = React.useState('/')
 
   const openFullPreview = React.useCallback((media) => {
     setPreviewImage(media)
@@ -48,7 +48,7 @@ const UIProvider = ({ children }: UIProviderProps) => {
   }, [])
 
   const closeFullPreview = React.useCallback(() => {
-    setPreviewImage('')
+    setPreviewImage('/')
     setPreviewOpen(false)
     setOverlayOpen(false)
   }, [])
@@ -58,7 +58,7 @@ const UIProvider = ({ children }: UIProviderProps) => {
     closeFullPreview()
   }, [])
 
-  React.useEffect(() => resetAll(), [asPath])
+  // React.useEffect(() => resetAll(), [asPath])
 
   const contextValue = {
     // Overlay
