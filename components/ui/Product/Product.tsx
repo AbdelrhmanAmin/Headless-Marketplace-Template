@@ -6,6 +6,36 @@ import cn from 'classnames'
 import s from './Product.module.css'
 import formatDate from 'utils/formatDate'
 import Skeleton from '../Skeleton'
+import { Card, ICard } from '../Card'
+import LinkItem from '../LinkItem'
+import ROUTES from '@constants/routes.json'
+
+const CollectionGrid = ({
+  cards,
+  isLoading,
+}: {
+  cards: ICard[]
+  isLoading?: boolean
+}) => {
+  return (
+    <div className={s.productBox}>
+      <div>
+        <strong>📚 Collection</strong>
+      </div>
+      <div className="flex overflow-y-auto p-2">
+        {cards.map((card) => (
+          <LinkItem
+            slug={`${ROUTES.MARKETPLACE.slug}/${card.id}`}
+            key={card.id}
+            className="w-full h-full"
+          >
+            <Card {...card} isLoading={isLoading} />
+          </LinkItem>
+        ))}
+      </div>
+    </div>
+  )
+}
 
 const ProductPayment = () => {
   return (
@@ -254,7 +284,8 @@ const ProductPage = ({
   episode,
   created,
   isLoading,
-}: IProductPage) => {
+  cards,
+}: IProductPage & { cards: ICard[] }) => {
   const details: IProductDetails = {
     id,
     gender,
@@ -267,7 +298,7 @@ const ProductPage = ({
   return (
     <section className="space-y-4">
       <div className={s.container}>
-        <div className={s.leftColumn}>
+        <div className={cn(s.centered, s.leftColumn)}>
           <ProductHeader
             isLoading={isLoading}
             name={name}
@@ -275,9 +306,15 @@ const ProductPage = ({
             screen="mobile"
             className="mb-4"
           />
-          <ProductPreview media={media} status={status} isLoading={isLoading} />
+          <div className="w-fit mx-auto">
+            <ProductPreview
+              media={media}
+              status={status}
+              isLoading={isLoading}
+            />
+          </div>
         </div>
-        <div className={s.rightColumn}>
+        <div className={cn(s.rightColumn)}>
           <ProductHeader
             name={name}
             price={price}
@@ -289,13 +326,20 @@ const ProductPage = ({
         </div>
       </div>
       <div className={s.container}>
-        <div className={s.leftColumn}>
+        <div className={cn(s.centered, s.leftColumn)}>
           <ProductDetails details={details} isLoading={isLoading} />
         </div>
-        <div className={s.rightColumn}>
+        <div className={cn(s.centered, s.rightColumn)}>
           <ProductActivity episode={episode} isLoading={isLoading} />
         </div>
       </div>
+      {cards && (
+        <div className={s.container}>
+          <div className={cn(s.centered, s.middle)}>
+            <CollectionGrid cards={cards} isLoading={isLoading} />
+          </div>
+        </div>
+      )}
     </section>
   )
 }
