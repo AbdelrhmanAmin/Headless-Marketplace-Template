@@ -152,38 +152,12 @@ const ProductHeader = ({
   )
   return (
     <div className={cn(s.productHeader, screen && s[screen], className)}>
-      <h1>
-        {isLoading ? (
-          <div
-            className={cn(
-              screen === 'desktop' ? 'h-20 -mb-2 w-96' : 'h-10 w-full'
-            )}
-          >
-            <Skeleton />
-          </div>
-        ) : (
-          name
-        )}
-      </h1>
+      <h1>{isLoading ? '--------' : name}</h1>
       <div className={s.priceContainer}>
         <span>
           <Coin />
         </span>
-        <span>
-          {isLoading ? (
-            <div
-              className={cn(
-                screen === 'desktop'
-                  ? 'w-20 -mr-2 h-12 flex'
-                  : 'flex h-7 w-7 mr-0.5'
-              )}
-            >
-              <Skeleton />
-            </div>
-          ) : (
-            price || memoizedPrice
-          )}
-        </span>
+        <span>{isLoading ? '000' : price || memoizedPrice}</span>
       </div>
     </div>
   )
@@ -203,15 +177,10 @@ const ProductPreview = ({
       <div className="flex items-center justify-between text-white bg-yellow-800 p-3">
         <div className="flex items-center space-x-2">
           <span>Status: </span>
-          <>
-            {isLoading ? (
-              <div className="inline-flex items-center w-12 h-3">
-                <Skeleton />
-              </div>
-            ) : (
-              <span className="font-semibold text-yellow-400">{status}</span>
-            )}
-          </>
+
+          <span className="font-semibold text-yellow-400">
+            {isLoading ? '----' : status}
+          </span>
         </div>
         <div role="button" onClick={() => !isLoading && openFullPreview(media)}>
           <svg

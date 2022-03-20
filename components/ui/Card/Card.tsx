@@ -55,7 +55,6 @@ const Card = ({ media, name, price, status, isLoading = false }: ICard) => {
             {isLoading ? (
               <div className="flex w-full items-center space-x-1 pl-4">
                 <div className="w-full h-3.5 bg-gray-600 rounded-md animate-pulse mt-1" />
-                <div className="w-5 h-3.5 bg-gray-600 rounded-md animate-pulse mt-1" />
               </div>
             ) : (
               <div className="flex items-center space-x-1">
