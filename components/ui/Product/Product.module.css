@@ -26,7 +26,7 @@
   @apply flex-col justify-start space-y-3 text-white;
 }
 
-.productHeader > h4 {
+.productHeader > h1 {
   @apply text-4xl lg:text-7xl;
 }
 

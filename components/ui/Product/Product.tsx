@@ -5,6 +5,7 @@ import { useUI } from '@state'
 import cn from 'classnames'
 import s from './Product.module.css'
 import formatDate from 'utils/formatDate'
+import Skeleton from '../Skeleton'
 
 const ProductPayment = () => {
   return (
@@ -24,44 +25,77 @@ interface IProductDetails {
   created: string
 }
 
-const ProductDetails = ({ details }: { details: IProductDetails }) => {
+const ProductDetails = ({
+  details,
+  isLoading,
+}: {
+  details: IProductDetails
+  isLoading?: boolean
+}) => {
   return (
     <div className={s.productBox}>
       <div>
         <strong>📒 Details</strong>
       </div>
-      <ul>
-        {Object.entries(details).map(([key, value]) => {
-          let val
-          if (typeof value === 'object') {
-            val = value.name
-          } else {
-            if (key === 'created') {
-              val = formatDate(value)
+      <ul className={s.maxHeight}>
+        {isLoading ? (
+          <ProductBoxSkeleton />
+        ) : (
+          Object.entries(details).map(([key, value]) => {
+            let val
+            if (typeof value === 'object') {
+              val = value.name
             } else {
-              val = value
+              if (key === 'created') {
+                val = formatDate(value)
+              } else {
+                val = value
+              }
             }
-          }
-          return (
-            <li className="flex justify-between" key={key}>
-              <span>{key}</span>
-              <span className="text-gray-700">{val}</span>
-            </li>
-          )
-        })}
+            return (
+              <li className="flex justify-between" key={key}>
+                <span>{key}</span>
+                <span className="text-gray-700">{val}</span>
+              </li>
+            )
+          })
+        )}
       </ul>
     </div>
   )
 }
 
-const ProductActivity = ({ episode }: Pick<IProductPage, 'episode'>) => {
+const ProductBoxSkeleton = () => {
+  const skeletons = new Array(6).fill('')
+  return (
+    <>
+      {skeletons.map((v, k) => {
+        return (
+          <div className="py-2" key={k}>
+            <div className="h-2">
+              <Skeleton />
+            </div>
+          </div>
+        )
+      })}
+    </>
+  )
+}
+
+const ProductActivity = ({
+  episode,
+  isLoading,
+}: Pick<IProductPage, 'episode' | 'isLoading' | 'className'>) => {
   return (
     <div className={s.productBox}>
       <div>
         <strong>📈 Activity</strong>
       </div>
       <ul className={s.maxHeight}>
-        {episode &&
+        {isLoading ? (
+          <ProductBoxSkeleton />
+        ) : (
+          episode &&
           episode.map(({ name }) => {
             return (
               <li className="flex justify-between" key={name}>
@@ -69,24 +103,31 @@ const ProductActivity = ({ episode }: Pick<IProductPage, 'episode'>) => {
                 <span className="text-gray-700">{name}</span>
               </li>
             )
-          })}
+          })
+        )}
       </ul>
     </div>
   )
 }
 
-const ProductDescription = () => {
+const ProductDescription = ({
+  isLoading,
+}: Pick<IProductPage, 'isLoading' | 'className'>) => {
   return (
     <div className={s.productBox}>
       <div>
-        <strong>📒 Description</strong>
+        <strong>📜 Description</strong>
       </div>
       <div className={s.maxHeight}>
-        <p>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa
-          mollitia quos, harum, nulla quasi expedita quo architecto est aliquam
-          dolores sapiente possimus consequuntur, dolor nostrum place.
-        </p>
+        {isLoading ? (
+          <ProductBoxSkeleton />
+        ) : (
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa
+            mollitia quos, harum, nulla quasi expedita quo architecto est
+            aliquam dolores sapiente possimus consequuntur, dolor nostrum place.
+          </p>
+        )}
       </div>
     </div>
   )
@@ -103,7 +144,7 @@ const ProductHeader = ({ price, name, screen, className }: IProductHeader) => {
   )
   return (
     <div className={cn(s.productHeader, screen && s[screen], className)}>
-      <h4>{name}</h4>
+      <h1>{name}</h1>
       <div className={s.priceContainer}>
         <span>
           <Coin />
@@ -117,7 +158,7 @@ const ProductHeader = ({ price, name, screen, className }: IProductHeader) => {
 const ProductPreview = ({
   media,
   status,
-  isLoading
+  isLoading,
 }: Pick<IProductPage, 'media' | 'status' | 'className' | 'isLoading'>) => {
   const { openFullPreview } = useUI()
   return (
@@ -196,15 +237,15 @@ const ProductPage = ({
         <div className={s.rightColumn}>
           <ProductHeader name={name} price={price} screen="desktop" />
           <ProductPayment />
-          <ProductDescription />
+          <ProductDescription isLoading={isLoading} />
         </div>
       </div>
       <div className={s.container}>
         <div className={s.leftColumn}>
-          <ProductDetails details={details} />
+          <ProductDetails details={details} isLoading={isLoading} />
         </div>
         <div className={s.rightColumn}>
-          <ProductActivity episode={episode} />
+          <ProductActivity episode={episode} isLoading={isLoading} />
         </div>
       </div>
     </section>
