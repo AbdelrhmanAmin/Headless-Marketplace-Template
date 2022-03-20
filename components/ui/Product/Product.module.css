@@ -27,7 +27,8 @@
 }
 
 .productHeader > h1 {
-  @apply text-4xl lg:text-7xl;
+  @apply text-4xl lg:text-7xl
+  lg:mb-6;
 }
 
 .productHeader .priceContainer {

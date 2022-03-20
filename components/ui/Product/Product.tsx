@@ -134,17 +134,31 @@ const ProductDescription = ({
 }
 
 interface IProductHeader
-  extends Pick<IProductPage, 'price' | 'name' | 'className'> {
+  extends Pick<IProductPage, 'price' | 'name' | 'className' | 'isLoading'> {
   screen: 'desktop' | 'mobile'
 }
-const ProductHeader = ({ price, name, screen, className }: IProductHeader) => {
+const ProductHeader = ({
+  price,
+  name,
+  isLoading,
+  screen,
+  className,
+}: IProductHeader) => {
   const memoizedPrice = React.useMemo(
     () => Math.floor(Math.random() * 1000) + 1,
     []
   )
   return (
     <div className={cn(s.productHeader, screen && s[screen], className)}>
-      <h1>{name}</h1>
+      <h1>
+        {isLoading ? (
+          <div className={cn(screen === "desktop" ? 'h-20 -mb-2 w-96' : "h-10 w-full")}>
+            <Skeleton />
+          </div>
+        ) : (
+          name
+        )}
+      </h1>
       <div className={s.priceContainer}>
         <span>
           <Coin />
@@ -163,15 +177,23 @@ const ProductPreview = ({
   const { openFullPreview } = useUI()
   return (
     <Stack className="rounded-lg shadow-lg overflow-hidden bg-yellow-800">
-      <div role="button" onClick={() => openFullPreview(media)}>
+      <div role="button" onClick={() => !isLoading && openFullPreview(media)}>
         <ImageViewer variant="Product" media={media} isLoading={isLoading} />
       </div>
       <div className="flex items-center justify-between text-white bg-yellow-800 p-3">
         <p>
           <span>Status: </span>
-          <span className={cn('font-semibold text-yellow-400')}>{status}</span>
+          {isLoading ? (
+            <div className="inline-flex w-12 h-2">
+              <Skeleton />
+            </div>
+          ) : (
+            <span className={cn('font-semibold text-yellow-400')}>
+              {status}
+            </span>
+          )}
         </p>
-        <div role="button" onClick={() => openFullPreview(media)}>
+        <div role="button" onClick={() => !isLoading && openFullPreview(media)}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="20"
@@ -227,6 +249,7 @@ const ProductPage = ({
       <div className={s.container}>
         <div className={s.leftColumn}>
           <ProductHeader
+            isLoading={isLoading}
             name={name}
             price={price}
             screen="mobile"
@@ -235,7 +258,12 @@ const ProductPage = ({
           <ProductPreview media={media} status={status} isLoading={isLoading} />
         </div>
         <div className={s.rightColumn}>
-          <ProductHeader name={name} price={price} screen="desktop" />
+          <ProductHeader
+            name={name}
+            price={price}
+            screen="desktop"
+            isLoading={isLoading}
+          />
           <ProductPayment />
           <ProductDescription isLoading={isLoading} />
         </div>
