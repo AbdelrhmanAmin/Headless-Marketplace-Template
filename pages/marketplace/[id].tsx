@@ -5,7 +5,7 @@ import type { ICard, IProductPage } from '@components/ui'
 const ProductPage = ({ product }: { product: IProductPage }) => {
   return (
     <>
-      <TitleAndMeta title={product.name} />
+      <TitleAndMeta title={product?.name || "[Product Name]"} />
       <Container hasPaddingX hasPaddingY>
         <Product {...product} />
       </Container>
