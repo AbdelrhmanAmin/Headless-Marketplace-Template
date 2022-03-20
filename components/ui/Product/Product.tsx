@@ -7,9 +7,9 @@ import s from './Product.module.css'
 
 const ProductPayment = () => {
   return (
-    <div className="border-yellow-700 bg-yellow-600 p-8">
-      <div className='w-fit'>
-        <Button>💵 Buy Now</Button>
+    <div className="border-yellow-700 bg-yellow-600 py-10 px-8">
+      <div className="w-fit">
+        <Button>Buy Now 💳</Button>
       </div>
     </div>
   )
@@ -34,6 +34,26 @@ const ProductDetails = ({ details }: { details: IProductDetails }) => {
             <li className="flex justify-between" key={key}>
               <span>{key}</span>
               <span className="text-gray-700">{value.name || value}</span>
+            </li>
+          )
+        })}
+      </ul>
+    </div>
+  )
+}
+
+const ProductActivity = ({ episode }: Pick<IProductPage, 'episode'>) => {
+  return (
+    <div className={s.productBox}>
+      <div>
+        <strong>📈 Activity</strong>
+      </div>
+      <ul className={s.maxHeight}>
+        {episode.map(({ name }) => {
+          return (
+            <li className="flex justify-between" key={name}>
+              <span>Episode Name:</span>
+              <span className="text-gray-700">{name}</span>
             </li>
           )
         })}
@@ -120,6 +140,7 @@ export interface IProductPage extends IProductDetails {
   price: number
   status?: string
   className?: string
+  episode: { name: string }[]
 }
 
 const ProductPage = ({
@@ -132,6 +153,7 @@ const ProductPage = ({
   origin,
   location,
   species,
+  episode,
 }: IProductPage) => {
   const details: IProductDetails = {
     id,
@@ -156,6 +178,7 @@ const ProductPage = ({
         <div className={s.rightColumn}>
           <ProductHeader name={name} price={price} screen="desktop" />
           <ProductPayment />
+          <ProductDescription />
         </div>
       </div>
       <div className={s.container}>
@@ -163,7 +186,7 @@ const ProductPage = ({
           <ProductDetails details={details} />
         </div>
         <div className={s.rightColumn}>
-          <ProductDescription />
+          <ProductActivity episode={episode} />
         </div>
       </div>
     </section>

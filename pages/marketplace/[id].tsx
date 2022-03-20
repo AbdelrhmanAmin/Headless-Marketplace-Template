@@ -79,6 +79,9 @@ export const getStaticProps = async (context: PageContext) => {
           }
           species
           status
+          episode {
+            name
+          }
         }
       }      
       `,

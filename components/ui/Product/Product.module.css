@@ -57,12 +57,12 @@
 }
 
 .maxHeight {
-  @apply overflow-y-auto max-h-52 h-full;
+  @apply overflow-y-auto max-h-48 h-full;
 }
 
 .productBox > div:last-of-type:not(:first-of-type),
 .productBox > ul {
-  @apply p-5 pt-2 bg-white;
+  @apply p-5 pt-2 bg-white h-full;
 }
 
 .productBox > ul > li {
