@@ -8,9 +8,15 @@ import formatDate from 'utils/formatDate'
 import Skeleton from '../Skeleton'
 import { Card, ICard } from '../Card'
 import LinkItem from '../LinkItem'
-import ROUTES from '@constants/routes.json' 
+import ROUTES from '@constants/routes.json'
 
-const CollectionGrid = ({ cards }: { cards: ICard[] }) => {
+const CollectionGrid = ({
+  cards,
+  isLoading,
+}: {
+  cards: ICard[]
+  isLoading?: boolean
+}) => {
   return (
     <div className={s.productBox}>
       <div>
@@ -23,7 +29,7 @@ const CollectionGrid = ({ cards }: { cards: ICard[] }) => {
             key={card.id}
             className="w-full h-full"
           >
-            <Card {...card} />
+            <Card {...card} isLoading={isLoading} />
           </LinkItem>
         ))}
       </div>
@@ -329,7 +335,7 @@ const ProductPage = ({
       </div>
       <div className={s.container}>
         <div className={cn(s.centered, s.middle)}>
-          <CollectionGrid cards={cards} />
+          <CollectionGrid cards={cards} isLoading={isLoading} />
         </div>
       </div>
     </section>
