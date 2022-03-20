@@ -7,6 +7,17 @@ import s from './Product.module.css'
 import formatDate from 'utils/formatDate'
 import Skeleton from '../Skeleton'
 
+const CollectionGrid = () => {
+  return (
+    <div className={s.productBox}>
+      <div>
+        <strong>📚 Collection</strong>
+      </div>
+      <div>{/* <Card /> */}</div>
+    </div>
+  )
+}
+
 const ProductPayment = () => {
   return (
     <div className={s.productPayment}>
@@ -294,6 +305,11 @@ const ProductPage = ({
         </div>
         <div className={s.rightColumn}>
           <ProductActivity episode={episode} isLoading={isLoading} />
+        </div>
+      </div>
+      <div className={s.container}>
+        <div className={s.middle}>
+          <CollectionGrid />
         </div>
       </div>
     </section>

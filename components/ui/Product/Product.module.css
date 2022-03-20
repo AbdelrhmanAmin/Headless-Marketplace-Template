@@ -1,18 +1,24 @@
 .container {
   @apply flex flex-col lg:flex-row
-  justify-evenly
+  justify-between gap-4 px-4
   items-center lg:items-stretch
   gap-y-4;
 }
 
+.middle {
+  @apply flex flex-col items-center justify-center
+  w-full sm:w-[520px] lg:w-full;
+}
+
 .leftColumn {
-  @apply sm:w-[520px] lg:w-5/12;
+  @apply flex flex-col justify-center
+  w-full sm:w-[520px] lg:w-5/12;
 }
 
 .rightColumn {
   @apply flex flex-col
   space-y-6
-  sm:w-[520px] lg:w-1/2;
+  w-full sm:w-[520px] lg:w-7/12;
 }
 
 .desktop {
@@ -57,7 +63,7 @@
 }
 
 .productBox {
-  @apply flex flex-col h-full
+  @apply flex flex-col h-full w-full
   rounded-md overflow-hidden
   border-2 border-yellow-700
   bg-yellow-600;
@@ -77,5 +83,5 @@
 }
 
 .productBox > ul > li {
-  @apply border-b pb-0.5
+  @apply border-b pb-0.5;
 }
