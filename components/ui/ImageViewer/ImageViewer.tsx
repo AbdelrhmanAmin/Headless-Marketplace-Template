@@ -2,7 +2,6 @@ import React from 'react'
 import Image, { ImageProps } from 'next/image'
 import s from './ImageViewer.module.css'
 import cn from 'classnames'
-import Skeleton from '../Skeleton'
 
 interface ImgPropsInterface {
   width: ImageProps['width']
@@ -52,18 +51,14 @@ const ImageViewer = ({
   return (
     <div className={rootClass}>
       {isLoading ? (
-        <div
-          className={cn(
-            'overflow-hidden flex w-full h-full bg-white',
-            childClassName
-          )}
-          style={{
-            maxWidth: `${img['width']}px`,
-            maxHeight: `${img['height']}px`,
-          }}
-        >
-          <Skeleton />
-        </div>
+        <Image
+          src={'/loading.gif'}
+          alt={alt}
+          priority
+          className={childClassName}
+          {...img}
+          objectFit="cover"
+        />
       ) : (
         <Image
           src={media}

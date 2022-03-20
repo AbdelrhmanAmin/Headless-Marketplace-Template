@@ -196,12 +196,8 @@ const ProductPreview = ({
 }: Pick<IProductPage, 'media' | 'status' | 'className' | 'isLoading'>) => {
   const { openFullPreview } = useUI()
   return (
-    <Stack className="rounded-lg shadow-lg overflow-hidden bg-yellow-800 min-h-full justify-end">
-      <div
-        role="button"
-        onClick={() => !isLoading && openFullPreview(media)}
-        className="flex min-h-full w-full h-full"
-      >
+    <Stack className="rounded-lg shadow-lg overflow-hidden">
+      <div role="button" onClick={() => !isLoading && openFullPreview(media)}>
         <ImageViewer variant="Product" media={media} isLoading={isLoading} />
       </div>
       <div className="flex items-center justify-between text-white bg-yellow-800 p-3">
