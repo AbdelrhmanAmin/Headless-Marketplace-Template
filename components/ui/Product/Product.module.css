@@ -1,6 +1,7 @@
 .container {
   @apply flex flex-col lg:flex-row
   justify-evenly
+  items-center lg:items-stretch
   gap-y-4;
 }
 
