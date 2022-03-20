@@ -97,7 +97,7 @@ export default function Marketplace({ cards }: { cards: ICard[] }) {
         {cardsRef.current.map((card, i) => {
           if (i === cardsRef.current.length - 1) {
             return (
-              <div ref={lastCardRef} className="w-full h-full" key={i}>
+              <div ref={lastCardRef} className="w-full h-full" key={card.id}>
                 <LinkItem slug={`${ROUTES.MARKETPLACE.slug}/${card.id}`}>
                   <Card {...card} />
                 </LinkItem>
@@ -105,7 +105,10 @@ export default function Marketplace({ cards }: { cards: ICard[] }) {
             )
           }
           return (
-            <LinkItem slug={`${ROUTES.MARKETPLACE.slug}/${card.id}`} key={i}>
+            <LinkItem
+              slug={`${ROUTES.MARKETPLACE.slug}/${card.id}`}
+              key={card.id}
+            >
               <Card {...card} />
             </LinkItem>
           )

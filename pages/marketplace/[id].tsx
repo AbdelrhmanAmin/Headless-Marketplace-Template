@@ -3,14 +3,20 @@ import { Product, Container, TitleAndMeta } from '@components/ui'
 import type { ICard, IProductPage } from '@components/ui'
 import { useRouter } from 'next/router'
 
-const ProductPage = ({ product }: { product: IProductPage }) => {
+const ProductPage = ({
+  product,
+  cards,
+}: {
+  product: IProductPage
+  cards: ICard[]
+}) => {
   const router = useRouter()
   const isLoading = router.isFallback
   return (
     <>
       <TitleAndMeta title={product?.name || '[Product Name]'} />
       <Container hasPaddingX hasPaddingY>
-        <Product {...product} isLoading={isLoading} />
+        <Product cards={cards} {...product} isLoading={isLoading} />
       </Container>
     </>
   )
@@ -75,16 +81,24 @@ export const getStaticProps = async (context: PageContext) => {
           created
           gender
           media: image
-          origin{
+          origin {
             name
           }
-          location{
+          location {
             name
           }
           species
           status
           episode {
             name
+          }
+        }
+        characters {
+          results {
+            id
+            name
+            media: image
+            status
           }
         }
       }      
@@ -99,9 +113,10 @@ export const getStaticProps = async (context: PageContext) => {
 
   const { data } = await result.json()
   const product = data.character
+  const cards = data.characters.results
 
   return {
-    props: { product },
+    props: { product, cards },
   }
 }
 export default ProductPage
