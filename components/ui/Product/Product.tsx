@@ -333,11 +333,13 @@ const ProductPage = ({
           <ProductActivity episode={episode} isLoading={isLoading} />
         </div>
       </div>
-      <div className={s.container}>
-        <div className={cn(s.centered, s.middle)}>
-          <CollectionGrid cards={cards} isLoading={isLoading} />
+      {cards && (
+        <div className={s.container}>
+          <div className={cn(s.centered, s.middle)}>
+            <CollectionGrid cards={cards} isLoading={isLoading} />
+          </div>
         </div>
-      </div>
+      )}
     </section>
   )
 }
