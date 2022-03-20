@@ -5,19 +5,21 @@
   gap-y-4;
 }
 
+.col {
+  @apply flex flex-col
+  items-center justify-center;
+}
+
 .middle {
-  @apply flex flex-col items-center justify-center
-  w-full sm:w-[520px] lg:w-full;
+  @apply w-full sm:w-[520px] lg:w-full;
 }
 
 .leftColumn {
-  @apply flex flex-col justify-center
-  w-full sm:w-[520px] lg:w-5/12;
+  @apply w-full sm:w-[520px] lg:w-5/12;
 }
 
 .rightColumn {
-  @apply flex flex-col
-  space-y-6
+  @apply space-y-6
   w-full sm:w-[520px] lg:w-7/12;
 }
 

@@ -278,7 +278,7 @@ const ProductPage = ({
   return (
     <section className="space-y-4">
       <div className={s.container}>
-        <div className={s.leftColumn}>
+        <div className={cn(s.leftColumn)}>
           <ProductHeader
             isLoading={isLoading}
             name={name}
@@ -286,9 +286,15 @@ const ProductPage = ({
             screen="mobile"
             className="mb-4"
           />
-          <ProductPreview media={media} status={status} isLoading={isLoading} />
+          <div className='w-fit mx-auto'>
+            <ProductPreview
+              media={media}
+              status={status}
+              isLoading={isLoading}
+            />
+          </div>
         </div>
-        <div className={s.rightColumn}>
+        <div className={cn(s.rightColumn)}>
           <ProductHeader
             name={name}
             price={price}
@@ -300,15 +306,15 @@ const ProductPage = ({
         </div>
       </div>
       <div className={s.container}>
-        <div className={s.leftColumn}>
+        <div className={cn(s.col, s.leftColumn)}>
           <ProductDetails details={details} isLoading={isLoading} />
         </div>
-        <div className={s.rightColumn}>
+        <div className={cn(s.col, s.rightColumn)}>
           <ProductActivity episode={episode} isLoading={isLoading} />
         </div>
       </div>
       <div className={s.container}>
-        <div className={s.middle}>
+        <div className={cn(s.col, s.middle)}>
           <CollectionGrid />
         </div>
       </div>
