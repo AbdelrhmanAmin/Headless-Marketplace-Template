@@ -68,7 +68,7 @@
 }
 
 .maxHeight {
-  @apply overflow-y-auto max-h-48 h-full;
+  @apply overflow-y-auto max-h-48;
 }
 
 .productBox > div:last-of-type:not(:first-of-type),

@@ -53,10 +53,13 @@ const ImageViewer = ({
     <div className={rootClass}>
       {isLoading ? (
         <div
-          className="overflow-hidden w-full h-full bg-white"
+          className={cn(
+            'overflow-hidden flex w-full h-full bg-white',
+            childClassName
+          )}
           style={{
-            width: `${img['width']}px`,
-            height: `${img['height']}px`,
+            maxWidth: `${img['width']}px`,
+            maxHeight: `${img['height']}px`,
           }}
         >
           <Skeleton />

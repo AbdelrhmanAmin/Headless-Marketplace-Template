@@ -39,7 +39,7 @@ const ProductDetails = ({
       </div>
       <ul className={s.maxHeight}>
         {isLoading ? (
-          <ProductBoxSkeleton />
+          <ProductBoxSkeleton num={10} />
         ) : (
           Object.entries(details).map(([key, value]) => {
             let val
@@ -65,8 +65,8 @@ const ProductDetails = ({
   )
 }
 
-const ProductBoxSkeleton = () => {
-  const skeletons = new Array(8).fill('')
+const ProductBoxSkeleton = ({ num = 5 }: { num?: number }) => {
+  const skeletons = new Array(num).fill('')
   return (
     <>
       {skeletons.map((v, k) => {
@@ -93,7 +93,7 @@ const ProductActivity = ({
       </div>
       <ul className={s.maxHeight}>
         {isLoading ? (
-          <ProductBoxSkeleton />
+          <ProductBoxSkeleton num={10} />
         ) : (
           episode &&
           episode.map(({ name }) => {
@@ -125,6 +125,8 @@ const ProductDescription = ({
           <p>
             Lorem ipsum dolor sit amet, consectetur adipisicing elit. Culpa
             mollitia quos, harum, nulla quasi expedita quo architecto est
+            aliquam dolores sapiente possimus consequuntur, dolor nostrum place.
+            aliquam dolores sapiente possimus consequuntur, dolor nostrum place.
             aliquam dolores sapiente possimus consequuntur, dolor nostrum place.
           </p>
         )}
@@ -194,12 +196,16 @@ const ProductPreview = ({
 }: Pick<IProductPage, 'media' | 'status' | 'className' | 'isLoading'>) => {
   const { openFullPreview } = useUI()
   return (
-    <Stack className="rounded-lg shadow-lg overflow-hidden bg-yellow-800">
-      <div role="button" onClick={() => !isLoading && openFullPreview(media)}>
+    <Stack className="rounded-lg shadow-lg overflow-hidden bg-yellow-800 min-h-full justify-end">
+      <div
+        role="button"
+        onClick={() => !isLoading && openFullPreview(media)}
+        className="flex min-h-full w-full h-full"
+      >
         <ImageViewer variant="Product" media={media} isLoading={isLoading} />
       </div>
       <div className="flex items-center justify-between text-white bg-yellow-800 p-3">
-        <div className='flex items-center space-x-2'>
+        <div className="flex items-center space-x-2">
           <span>Status: </span>
           <>
             {isLoading ? (
