@@ -4,10 +4,11 @@ import { Coin } from '@components/icons'
 import { useUI } from '@state'
 import cn from 'classnames'
 import s from './Product.module.css'
+import formatDate from 'utils/formatDate'
 
 const ProductPayment = () => {
   return (
-    <div className="border-yellow-700 bg-yellow-600 py-10 px-8">
+    <div className={s.productPayment}>
       <div className="w-fit">
         <Button>Buy Now 💳</Button>
       </div>
@@ -20,6 +21,7 @@ interface IProductDetails {
   location: { name: string }
   species: string
   gender: string
+  created: string
 }
 
 const ProductDetails = ({ details }: { details: IProductDetails }) => {
@@ -30,10 +32,20 @@ const ProductDetails = ({ details }: { details: IProductDetails }) => {
       </div>
       <ul>
         {Object.entries(details).map(([key, value]) => {
+          let val
+          if (typeof value === 'object') {
+            val = value.name
+          } else {
+            if (key === 'created') {
+              val = formatDate(value)
+            } else {
+              val = value
+            }
+          }
           return (
             <li className="flex justify-between" key={key}>
               <span>{key}</span>
-              <span className="text-gray-700">{value.name || value}</span>
+              <span className="text-gray-700">{val}</span>
             </li>
           )
         })}
@@ -154,6 +166,7 @@ const ProductPage = ({
   location,
   species,
   episode,
+  created,
 }: IProductPage) => {
   const details: IProductDetails = {
     id,
@@ -161,6 +174,7 @@ const ProductPage = ({
     origin,
     location,
     species,
+    created,
   }
 
   return (

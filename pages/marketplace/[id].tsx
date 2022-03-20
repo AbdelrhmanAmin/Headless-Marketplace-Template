@@ -69,6 +69,7 @@ export const getStaticProps = async (context: PageContext) => {
         character(id: $ID) {
           id
           name
+          created
           gender
           media: image
           origin{

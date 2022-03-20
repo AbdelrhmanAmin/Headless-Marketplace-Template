@@ -1,6 +1,7 @@
 .container {
   @apply flex flex-col lg:flex-row
-  justify-evenly;
+  justify-evenly
+  gap-y-4;
 }
 
 .leftColumn {
@@ -43,6 +44,14 @@
 
 .priceContainer > span:last-of-type {
   @apply text-xl lg:text-5xl;
+}
+
+.productPayment {
+  @apply border-yellow-700 bg-yellow-600
+  py-10 px-8
+  shadow hover:shadow-md
+  transition-shadow duration-200
+  rounded-md;
 }
 
 .productBox {
