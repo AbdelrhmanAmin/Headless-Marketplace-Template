@@ -2,6 +2,7 @@ import React from 'react'
 import Image, { ImageProps } from 'next/image'
 import s from './ImageViewer.module.css'
 import cn from 'classnames'
+import Skeleton from '../Skeleton'
 
 interface ImgPropsInterface {
   width: ImageProps['width']
@@ -23,7 +24,7 @@ const Variants: {
   },
   Product: {
     width: '520',
-    height: '520',
+    height: '510',
     layout: 'intrinsic',
     objectFit: 'fill',
   },
@@ -51,8 +52,14 @@ const ImageViewer = ({
   return (
     <div className={rootClass}>
       {isLoading ? (
-        <div className="py-2 overflow-hidden w-full h-full">
-          <div className="h-full w-full bg-gray-600 rounded-md animate-pulse" />
+        <div
+          className="overflow-hidden w-full h-full bg-white"
+          style={{
+            width: `${img['width']}px`,
+            height: `${img['height']}px`,
+          }}
+        >
+          <Skeleton />
         </div>
       ) : (
         <Image

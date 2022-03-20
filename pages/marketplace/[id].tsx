@@ -1,22 +1,21 @@
 import React from 'react'
 import { Product, Container, TitleAndMeta } from '@components/ui'
 import type { ICard, IProductPage } from '@components/ui'
+import { useRouter } from 'next/router'
 
 const ProductPage = ({ product }: { product: IProductPage }) => {
+  const router = useRouter()
+  const isLoading = router.isFallback
   return (
     <>
-      <TitleAndMeta title={product?.name || "[Product Name]"} />
+      <TitleAndMeta title={product?.name || '[Product Name]'} />
       <Container hasPaddingX hasPaddingY>
-        <Product {...product} />
+        <Product {...product} isLoading={true} />
       </Container>
     </>
   )
 }
 
-interface PageContext {
-  params: { id: string }
-  fallback?: boolean
-}
 export const getStaticPaths = async () => {
   const result = await fetch('https://rickandmortyapi.com/graphql', {
     method: 'POST',
@@ -54,6 +53,10 @@ export const getStaticPaths = async () => {
     paths: staticPaths,
     fallback: true,
   }
+}
+
+interface PageContext {
+  params: { id: string }
 }
 
 export const getStaticProps = async (context: PageContext) => {

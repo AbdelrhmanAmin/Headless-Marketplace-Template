@@ -1,0 +1,19 @@
+.skeleton {
+  @apply h-full w-full bg-gray-600;
+  background: linear-gradient(
+      90deg,
+      rgba(255, 255, 255, 0) 30%,
+      rgba(255, 255, 255, 0.4) 50%,
+      rgba(255, 255, 255, 0) 60%
+    )
+    gray;
+  background-size: 340% 100%;
+  background-position-x: 120%;
+  animation: 2s loading ease-in-out infinite;
+}
+
+@keyframes loading {
+  to {
+    background-position-x: -50%;
+  }
+}

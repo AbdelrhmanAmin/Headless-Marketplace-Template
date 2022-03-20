@@ -61,14 +61,15 @@ const ProductActivity = ({ episode }: Pick<IProductPage, 'episode'>) => {
         <strong>📈 Activity</strong>
       </div>
       <ul className={s.maxHeight}>
-        {episode && episode.map(({ name }) => {
-          return (
-            <li className="flex justify-between" key={name}>
-              <span>Episode Name:</span>
-              <span className="text-gray-700">{name}</span>
-            </li>
-          )
-        })}
+        {episode &&
+          episode.map(({ name }) => {
+            return (
+              <li className="flex justify-between" key={name}>
+                <span>Episode Name:</span>
+                <span className="text-gray-700">{name}</span>
+              </li>
+            )
+          })}
       </ul>
     </div>
   )
@@ -116,12 +117,13 @@ const ProductHeader = ({ price, name, screen, className }: IProductHeader) => {
 const ProductPreview = ({
   media,
   status,
-}: Pick<IProductPage, 'media' | 'status' | 'className'>) => {
+  isLoading
+}: Pick<IProductPage, 'media' | 'status' | 'className' | 'isLoading'>) => {
   const { openFullPreview } = useUI()
   return (
     <Stack className="rounded-lg shadow-lg overflow-hidden bg-yellow-800">
       <div role="button" onClick={() => openFullPreview(media)}>
-        <ImageViewer variant="Product" media={media} />
+        <ImageViewer variant="Product" media={media} isLoading={isLoading} />
       </div>
       <div className="flex items-center justify-between text-white bg-yellow-800 p-3">
         <p>
@@ -153,6 +155,7 @@ export interface IProductPage extends IProductDetails {
   status?: string
   className?: string
   episode: { name: string }[]
+  isLoading?: boolean
 }
 
 const ProductPage = ({
@@ -167,6 +170,7 @@ const ProductPage = ({
   species,
   episode,
   created,
+  isLoading,
 }: IProductPage) => {
   const details: IProductDetails = {
     id,
@@ -187,7 +191,7 @@ const ProductPage = ({
             screen="mobile"
             className="mb-4"
           />
-          <ProductPreview media={media} status={status} />
+          <ProductPreview media={media} status={status} isLoading={isLoading} />
         </div>
         <div className={s.rightColumn}>
           <ProductHeader name={name} price={price} screen="desktop" />
