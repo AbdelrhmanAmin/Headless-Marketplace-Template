@@ -23,7 +23,7 @@ const Variants: {
   },
   Product: {
     width: '520',
-    height: '520',
+    height: '510',
     layout: 'intrinsic',
     objectFit: 'fill',
   },
@@ -51,9 +51,14 @@ const ImageViewer = ({
   return (
     <div className={rootClass}>
       {isLoading ? (
-        <div className="py-2 overflow-hidden w-full h-full">
-          <div className="h-full w-full bg-gray-600 rounded-md animate-pulse" />
-        </div>
+        <Image
+          src={'/loading.gif'}
+          alt={alt}
+          priority
+          className={childClassName}
+          {...img}
+          objectFit="cover"
+        />
       ) : (
         <Image
           src={media}

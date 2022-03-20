@@ -1,6 +1,7 @@
 .container {
   @apply flex flex-col lg:flex-row
   justify-evenly
+  items-center lg:items-stretch
   gap-y-4;
 }
 
@@ -26,8 +27,9 @@
   @apply flex-col justify-start space-y-3 text-white;
 }
 
-.productHeader > h4 {
-  @apply text-4xl lg:text-7xl;
+.productHeader > h1 {
+  @apply text-4xl lg:text-7xl
+  lg:mb-6;
 }
 
 .productHeader .priceContainer {
@@ -66,7 +68,7 @@
 }
 
 .maxHeight {
-  @apply overflow-y-auto max-h-48 h-full;
+  @apply overflow-y-auto max-h-48;
 }
 
 .productBox > div:last-of-type:not(:first-of-type),
