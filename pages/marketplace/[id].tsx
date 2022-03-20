@@ -1,12 +1,15 @@
 import React from 'react'
-import { ProductPage, Container } from '@components/ui'
-import type { ICard } from '@components/ui'
+import { Product, Container, TitleAndMeta } from '@components/ui'
+import type { ICard, IProductPage } from '@components/ui'
 
-const Product = ({ card }: { card: ICard }) => {
+const ProductPage = ({ product }: { product: IProductPage }) => {
   return (
-    <Container hasPaddingX hasPaddingY>
-      <ProductPage {...card} />
-    </Container>
+    <>
+      <TitleAndMeta title={product?.name || "[Product Name]"} />
+      <Container hasPaddingX hasPaddingY>
+        <Product {...product} />
+      </Container>
+    </>
   )
 }
 
@@ -66,18 +69,20 @@ export const getStaticProps = async (context: PageContext) => {
         character(id: $ID) {
           id
           name
+          created
           gender
           media: image
           origin{
             name
-            dimension
           }
           location{
             name
-            dimension
           }
           species
           status
+          episode {
+            name
+          }
         }
       }      
       `,
@@ -90,10 +95,10 @@ export const getStaticProps = async (context: PageContext) => {
   }
 
   const { data } = await result.json()
-  const card = data.character
+  const product = data.character
 
   return {
-    props: { card },
+    props: { product },
   }
 }
-export default Product
+export default ProductPage

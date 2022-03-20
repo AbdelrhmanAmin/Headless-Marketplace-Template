@@ -1,5 +1,5 @@
 import React from 'react'
-import { Card, Container, LinkItem, SEO } from '@components/ui'
+import { Card, Container, LinkItem, TitleAndMeta } from '@components/ui'
 import type { ICard } from '@components/ui'
 import ROUTES from '@constants/routes.json'
 
@@ -85,15 +85,15 @@ export default function Marketplace({ cards }: { cards: ICard[] }) {
   }, [])
   return (
     <Container hasPaddingX hasPaddingY>
-      <SEO title={'Marketplace'} />
+      <TitleAndMeta title={'Marketplace'} />
       <div>
-        <h1 className="text-center text-7xl font-semibold text-gray-800">
+        <h1 className="text-center text-4xl sm:text-7xl font-semibold text-gray-800">
           [Marketplace]
         </h1>
 
         <p className="text-center text-lg mt-4">Scroll to infinity!</p>
       </div>
-      <div className="mt-4 grid gap-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-center">
+      <div className="mt-4 grid gap-1 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 justify-items-center">
         {cardsRef.current.map((card, i) => {
           if (i === cardsRef.current.length - 1) {
             return (
@@ -129,6 +129,7 @@ export const getStaticProps = async () => {
               id
               name
               media:image
+              status
             }
           }
         }
