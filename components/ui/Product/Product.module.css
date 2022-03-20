@@ -5,7 +5,7 @@
   gap-y-4;
 }
 
-.col {
+.centered {
   @apply flex flex-col
   items-center justify-center;
 }
@@ -19,7 +19,7 @@
 }
 
 .rightColumn {
-  @apply space-y-6
+  @apply flex flex-col gap-y-4
   w-full sm:w-[520px] lg:w-7/12;
 }
 

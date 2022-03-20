@@ -286,7 +286,7 @@ const ProductPage = ({
             screen="mobile"
             className="mb-4"
           />
-          <div className='w-fit mx-auto'>
+          <div className="w-fit mx-auto">
             <ProductPreview
               media={media}
               status={status}
@@ -306,15 +306,15 @@ const ProductPage = ({
         </div>
       </div>
       <div className={s.container}>
-        <div className={cn(s.col, s.leftColumn)}>
+        <div className={cn(s.centered, s.leftColumn)}>
           <ProductDetails details={details} isLoading={isLoading} />
         </div>
-        <div className={cn(s.col, s.rightColumn)}>
+        <div className={cn(s.centered, s.rightColumn)}>
           <ProductActivity episode={episode} isLoading={isLoading} />
         </div>
       </div>
       <div className={s.container}>
-        <div className={cn(s.col, s.middle)}>
+        <div className={cn(s.centered, s.middle)}>
           <CollectionGrid />
         </div>
       </div>
