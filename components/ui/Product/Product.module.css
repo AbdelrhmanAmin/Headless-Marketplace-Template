@@ -7,7 +7,7 @@
 
 .centered {
   @apply flex flex-col
-  items-center justify-center;
+  justify-center;
 }
 
 .middle {

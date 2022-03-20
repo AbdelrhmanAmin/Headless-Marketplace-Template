@@ -278,7 +278,7 @@ const ProductPage = ({
   return (
     <section className="space-y-4">
       <div className={s.container}>
-        <div className={cn(s.leftColumn)}>
+        <div className={cn(s.centered,s.leftColumn)}>
           <ProductHeader
             isLoading={isLoading}
             name={name}
