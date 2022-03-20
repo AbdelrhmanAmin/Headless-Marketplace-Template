@@ -10,7 +10,7 @@ const ProductPage = ({ product }: { product: IProductPage }) => {
     <>
       <TitleAndMeta title={product?.name || '[Product Name]'} />
       <Container hasPaddingX hasPaddingY>
-        <Product {...product} isLoading={true} />
+        <Product {...product} isLoading={isLoading} />
       </Container>
     </>
   )

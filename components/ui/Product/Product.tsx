@@ -66,7 +66,7 @@ const ProductDetails = ({
 }
 
 const ProductBoxSkeleton = () => {
-  const skeletons = new Array(6).fill('')
+  const skeletons = new Array(8).fill('')
   return (
     <>
       {skeletons.map((v, k) => {
@@ -152,7 +152,11 @@ const ProductHeader = ({
     <div className={cn(s.productHeader, screen && s[screen], className)}>
       <h1>
         {isLoading ? (
-          <div className={cn(screen === "desktop" ? 'h-20 -mb-2 w-96' : "h-10 w-full")}>
+          <div
+            className={cn(
+              screen === 'desktop' ? 'h-20 -mb-2 w-96' : 'h-10 w-full'
+            )}
+          >
             <Skeleton />
           </div>
         ) : (
@@ -163,7 +167,21 @@ const ProductHeader = ({
         <span>
           <Coin />
         </span>
-        <span>{price || memoizedPrice}</span>
+        <span>
+          {isLoading ? (
+            <div
+              className={cn(
+                screen === 'desktop'
+                  ? 'w-20 -mr-2 h-12 flex'
+                  : 'flex h-7 w-7 mr-0.5'
+              )}
+            >
+              <Skeleton />
+            </div>
+          ) : (
+            price || memoizedPrice
+          )}
+        </span>
       </div>
     </div>
   )
@@ -181,18 +199,18 @@ const ProductPreview = ({
         <ImageViewer variant="Product" media={media} isLoading={isLoading} />
       </div>
       <div className="flex items-center justify-between text-white bg-yellow-800 p-3">
-        <p>
+        <div className='flex items-center space-x-2'>
           <span>Status: </span>
-          {isLoading ? (
-            <div className="inline-flex w-12 h-2">
-              <Skeleton />
-            </div>
-          ) : (
-            <span className={cn('font-semibold text-yellow-400')}>
-              {status}
-            </span>
-          )}
-        </p>
+          <>
+            {isLoading ? (
+              <div className="inline-flex items-center w-12 h-3">
+                <Skeleton />
+              </div>
+            ) : (
+              <span className="font-semibold text-yellow-400">{status}</span>
+            )}
+          </>
+        </div>
         <div role="button" onClick={() => !isLoading && openFullPreview(media)}>
           <svg
             xmlns="http://www.w3.org/2000/svg"
