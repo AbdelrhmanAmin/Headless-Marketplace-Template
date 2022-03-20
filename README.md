@@ -2,10 +2,10 @@
 NextJS UI marketplace template
 
 ![image](https://user-images.githubusercontent.com/37663043/159179868-399108fd-3658-4686-9bd0-b8c7a01dc2c2.png)
-![image](https://user-images.githubusercontent.com/37663043/159179814-d45d15f7-52ab-463d-a32f-b993fab92a1c.png)
+![image](https://user-images.githubusercontent.com/37663043/159183597-74d07a85-a27e-42e3-b9c1-1e8f69e76832.png)
 
 
-![image](https://user-images.githubusercontent.com/37663043/159179911-f2018e6a-2de8-4a6b-8ebe-96fbc5fb03f6.png)
+![image](https://user-images.githubusercontent.com/37663043/159183622-2d4a8e5f-1875-4e86-8faa-cbe79197b9a2.png)
 ![image](https://user-images.githubusercontent.com/37663043/159179902-272c95a8-68f0-4899-8117-fa6b01692b66.png)
 
 
