@@ -61,7 +61,7 @@ const ProductActivity = ({ episode }: Pick<IProductPage, 'episode'>) => {
         <strong>📈 Activity</strong>
       </div>
       <ul className={s.maxHeight}>
-        {episode.map(({ name }) => {
+        {episode && episode.map(({ name }) => {
           return (
             <li className="flex justify-between" key={name}>
               <span>Episode Name:</span>
