@@ -2,7 +2,6 @@ import React from 'react'
 import { Stack, ImageViewer } from '@components/ui'
 import type { ICard } from '@components/ui'
 import { useUI } from '@state'
-
 import cn from 'classnames'
 import s from './Product.module.css'
 import formatDate from 'utils/formatDate'
@@ -11,6 +10,7 @@ import ProductPayment from './ProductPayment'
 import ProductBoxSkeleton from './ProductBoxSkeleton'
 import ProductDescription from './ProductDescription'
 import ProductHeader from './ProductHeader'
+import ProductActivity from './ProductActivity'
 
 interface IProductDetails {
   id: number
@@ -52,34 +52,6 @@ const ProductDetails = ({
               <li className="flex justify-between" key={key}>
                 <span>{key}</span>
                 <span className="text-gray-700">{val}</span>
-              </li>
-            )
-          })
-        )}
-      </ul>
-    </div>
-  )
-}
-
-const ProductActivity = ({
-  episode,
-  isLoading,
-}: Pick<IProductPage, 'episode' | 'isLoading' | 'className'>) => {
-  return (
-    <div className={s.productBox}>
-      <div>
-        <strong>📈 Activity</strong>
-      </div>
-      <ul className={s.maxHeight}>
-        {isLoading ? (
-          <ProductBoxSkeleton num={10} />
-        ) : (
-          episode &&
-          episode.map(({ name }) => {
-            return (
-              <li className="flex justify-between" key={name}>
-                <span>Episode Name:</span>
-                <span className="text-gray-700">{name}</span>
               </li>
             )
           })
