@@ -1,5 +1,5 @@
 import React from 'react'
-import { Stack, ImageViewer, Button, Skeleton } from '@components/ui'
+import { Stack, ImageViewer, Skeleton } from '@components/ui'
 import type { ICard } from '@components/ui'
 import { Coin } from '@components/icons'
 import { useUI } from '@state'
@@ -7,16 +7,8 @@ import cn from 'classnames'
 import s from './Product.module.css'
 import formatDate from 'utils/formatDate'
 import CollectionGrid from './CollectionGrid'
+import ProductPayment from './ProductPayment'
 
-const ProductPayment = () => {
-  return (
-    <div className={s.productPayment}>
-      <div className="w-fit">
-        <Button>Buy Now 💳</Button>
-      </div>
-    </div>
-  )
-}
 interface IProductDetails {
   id: number
   origin: { name: string }
