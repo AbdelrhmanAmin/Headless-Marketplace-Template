@@ -34,6 +34,6 @@
   @apply bg-yellow-200 text-gray-600;
 }
 .live {
-  @apply bg-black
+  @apply bg-slate-700
   border-gray-100 border-2;
 }

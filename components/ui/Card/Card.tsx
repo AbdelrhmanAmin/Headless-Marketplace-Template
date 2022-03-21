@@ -36,12 +36,12 @@ const Card = ({
           alt={name}
           variant="Marketplace"
         />
-        <div className="top-3 right-4 absolute">
+        <div className={s.badge}>
           <Badge variant="live" size="tiny">
             <div className="text-white font-bold h-3.5 w-12">
               {isLoading ? (
                 <div className="items-center justify-center flex h-full w-full">
-                  <Skeleton className="w-16 h-2 rounded-md" />
+                  <Skeleton className="h-2 rounded-md" />
                 </div>
               ) : (
                 <span>{status}</span>
@@ -52,10 +52,10 @@ const Card = ({
       </div>
       <Stack className={s.cardBody}>
         <div className={s.cardDetails}>
-          <Stack className="overflow-hidden">
+          <Stack>
             {isLoading ? (
-              <div className='pr-8'>
-                <Skeleton className="w-full h-3.5 rounded-md mt-1" />
+              <div className="pr-8">
+                <Skeleton className={s.skeleton} />
               </div>
             ) : (
               <h2 className={s.cardName}>{name}</h2>
@@ -64,11 +64,11 @@ const Card = ({
 
           <Stack>
             {isLoading ? (
-              <Skeleton className="w-full h-3.5 rounded-md mt-1" />
+              <Skeleton className={s.skeleton} />
             ) : (
-              <div className="flex items-center space-x-1">
+              <div className={s.cardPriceContainer}>
                 <span className={s.cardPrice}>{price || memoizedPrice}</span>
-                <span className="h-4 w-4">
+                <span className={s.coin}>
                   <Coin />
                 </span>
               </div>
