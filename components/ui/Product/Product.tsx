@@ -1,41 +1,12 @@
 import React from 'react'
-import { Stack, ImageViewer, Button } from '@components/ui'
+import { Stack, ImageViewer, Button, Skeleton } from '@components/ui'
+import type { ICard } from '@components/ui'
 import { Coin } from '@components/icons'
 import { useUI } from '@state'
 import cn from 'classnames'
 import s from './Product.module.css'
 import formatDate from 'utils/formatDate'
-import Skeleton from '../Skeleton'
-import { Card, ICard } from '../Card'
-import LinkItem from '../LinkItem'
-import ROUTES from '@constants/routes.json'
-
-const CollectionGrid = ({
-  cards,
-  isLoading,
-}: {
-  cards: ICard[]
-  isLoading?: boolean
-}) => {
-  return (
-    <div className={s.productBox}>
-      <div>
-        <strong>📚 Collection</strong>
-      </div>
-      <div className="flex overflow-y-auto p-2">
-        {cards.map((card) => (
-          <LinkItem
-            slug={`${ROUTES.MARKETPLACE.slug}/${card.id}`}
-            key={card.id}
-            className="w-full h-full"
-          >
-            <Card variant='light' {...card} isLoading={isLoading} />
-          </LinkItem>
-        ))}
-      </div>
-    </div>
-  )
-}
+import CollectionGrid from './CollectionGrid'
 
 const ProductPayment = () => {
   return (
