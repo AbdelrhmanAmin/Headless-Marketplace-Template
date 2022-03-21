@@ -2,13 +2,13 @@ import React from 'react'
 import Link from 'next/link'
 import cn from 'classnames'
 import s from './LinkItem.module.css'
-interface LinkItemPropsInterface {
+interface LinkItemPropsInterface
+  extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   slug: string
   variant?: 'primary' | 'ghost'
   className?: string
   isActive?: boolean
   isExternal?: true
-  onClick?: () => {}
   children: React.ReactNode | string
   isRounded?: boolean
 }

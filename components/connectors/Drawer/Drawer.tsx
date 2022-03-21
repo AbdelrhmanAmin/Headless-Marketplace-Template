@@ -13,9 +13,11 @@ interface IDrawer {
 const Drawer = ({ isOpen, onClose }: IDrawer) => {
   return (
     <aside className={cn(s.root, isOpen ? s.show : s.hide)}>
-      <Stack className="pt-3 space-y-8 divide-y-2 divide-gray-500 capitalize text-gray-100 ">
-        <div className="px-4 flex justify-between items-center">
-          <h3 className="text-3xl">[Logo]</h3>
+      <Stack className={s.wrapper}>
+        <div>
+          <LinkItem slug="/" className="flex justify-start" onClick={onClose}>
+            <h3 className="text-3xl">[Logo]</h3>
+          </LinkItem>
           <div>
             <Button
               shape="circle"

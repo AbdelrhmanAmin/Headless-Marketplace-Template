@@ -1,15 +1,27 @@
 .root {
-  @apply fixed left-0 top-0 z-20
-  min-h-screen transition duration-200
+  @apply fixed top-0 z-20
+  min-h-screen w-full sm:w-96
+  transition-all duration-300
   bg-gray-800;
 }
 
 .show {
-  @apply w-full sm:w-96;
+  @apply left-0;
 }
 
 .hide {
-  @apply w-0 -left-96;
+  @apply -left-96;
+}
+
+.wrapper {
+  @apply pt-3 space-y-8
+  divide-y-2 divide-gray-500
+  capitalize text-gray-100;
+}
+
+.wrapper > div:first-of-type {
+  @apply flex justify-between items-center
+  px-4;
 }
 
 .menuTitle {
