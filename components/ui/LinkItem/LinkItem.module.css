@@ -23,7 +23,7 @@
 }
 
 .ghost:hover {
-  @apply bg-gray-900;
+  @apply bg-hover-secondary;
 }
 
 .ghost:focus {
@@ -32,6 +32,6 @@
 }
 
 .active {
-  @apply bg-gray-900 text-yellow-50
+  @apply bg-hover-secondary text-yellow-50
   outline-none;
 }

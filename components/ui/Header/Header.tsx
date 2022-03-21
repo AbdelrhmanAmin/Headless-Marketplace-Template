@@ -43,9 +43,11 @@ const Header = () => {
               onClick={openDrawer}
             >
               <svg
-                width="24"
-                height="24"
+                width="28"
+                height="28"
                 fill="currentColor"
+                stroke="currentColor"
+                strokeWidth={0.2}
                 viewBox="0 0 16 16"
               >
                 <path
