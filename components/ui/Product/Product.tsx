@@ -29,7 +29,7 @@ const CollectionGrid = ({
             key={card.id}
             className="w-full h-full"
           >
-            <Card variant='dark' {...card} isLoading={isLoading} />
+            <Card variant='light' {...card} isLoading={isLoading} />
           </LinkItem>
         ))}
       </div>
