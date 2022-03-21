@@ -1,7 +1,5 @@
 import React from 'react'
-import { Stack, ImageViewer } from '@components/ui'
 import type { ICard } from '@components/ui'
-import { useUI } from '@state'
 import cn from 'classnames'
 import s from './Product.module.css'
 import CollectionGrid from './CollectionGrid'
@@ -9,44 +7,8 @@ import ProductPayment from './ProductPayment'
 import ProductDescription from './ProductDescription'
 import ProductHeader from './ProductHeader'
 import ProductActivity from './ProductActivity'
+import ProductPreview from './ProductPreview'
 import ProductDetails, { IProductDetails } from './ProductDetails'
-
-const ProductPreview = ({
-  media,
-  status,
-  isLoading,
-}: Pick<IProductPage, 'media' | 'status' | 'className' | 'isLoading'>) => {
-  const { openFullPreview } = useUI()
-  return (
-    <Stack className="rounded-lg shadow-lg overflow-hidden">
-      <div role="button" onClick={() => !isLoading && openFullPreview(media)}>
-        <ImageViewer variant="Product" media={media} isLoading={isLoading} />
-      </div>
-      <div className="flex items-center justify-between text-white bg-yellow-800 p-3">
-        <div className="flex items-center space-x-2">
-          <span>Status: </span>
-
-          <span className="font-semibold text-yellow-400">
-            {isLoading ? '----' : status}
-          </span>
-        </div>
-        <div role="button" onClick={() => !isLoading && openFullPreview(media)}>
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="20"
-            height="20"
-            fill="currentColor"
-            stroke="currentColor"
-            strokeWidth={1.3}
-            viewBox="0 0 16 16"
-          >
-            <path d="M1.5 1a.5.5 0 0 0-.5.5v4a.5.5 0 0 1-1 0v-4A1.5 1.5 0 0 1 1.5 0h4a.5.5 0 0 1 0 1h-4zM10 .5a.5.5 0 0 1 .5-.5h4A1.5 1.5 0 0 1 16 1.5v4a.5.5 0 0 1-1 0v-4a.5.5 0 0 0-.5-.5h-4a.5.5 0 0 1-.5-.5zM.5 10a.5.5 0 0 1 .5.5v4a.5.5 0 0 0 .5.5h4a.5.5 0 0 1 0 1h-4A1.5 1.5 0 0 1 0 14.5v-4a.5.5 0 0 1 .5-.5zm15 0a.5.5 0 0 1 .5.5v4a1.5 1.5 0 0 1-1.5 1.5h-4a.5.5 0 0 1 0-1h4a.5.5 0 0 0 .5-.5v-4a.5.5 0 0 1 .5-.5z" />
-          </svg>
-        </div>
-      </div>
-    </Stack>
-  )
-}
 
 export interface IProductPage extends IProductDetails {
   media: string
