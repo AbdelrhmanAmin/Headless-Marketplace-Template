@@ -70,7 +70,7 @@
   @apply flex items-center space-x-1;
 }
 
-.cardPrice .coin {
+.coin {
   @apply h-4 w-4;
 }
 
