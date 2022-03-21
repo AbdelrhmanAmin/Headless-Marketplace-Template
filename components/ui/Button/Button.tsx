@@ -2,7 +2,7 @@ import cn from 'classnames'
 import React from 'react'
 import s from './Button.module.css'
 
-interface IButton {
+interface IButton extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode
   className?: string
   variant?: 'primary' | 'secondary'
@@ -16,6 +16,7 @@ const Button = ({
   size = 'large',
   variant = 'primary',
   shape = 'block',
+  ...rest
 }: IButton) => {
   const rootClass = cn(
     s.root,
@@ -24,7 +25,11 @@ const Button = ({
     shape && [s[shape]],
     className
   )
-  return <button className={rootClass}>{children}</button>
+  return (
+    <button {...rest} className={rootClass}>
+      {children}
+    </button>
+  )
 }
 
 export default Button

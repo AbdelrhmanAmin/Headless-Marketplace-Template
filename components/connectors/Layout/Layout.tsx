@@ -8,15 +8,21 @@ interface LayoutProps {
 }
 
 const Layout = ({ children }: LayoutProps) => {
-  const { isOverlayOpen, isPreviewOpen, previewImage, resetAll } = useUI()
+  const {
+    isOverlayOpen,
+    isPreviewOpen,
+    previewImage,
+    resetAll,
+    openDrawer,
+    closeDrawer,
+    isDrawerOpen,
+  } = useUI()
   return (
     <>
       <Overlay isOpen={isOverlayOpen} onClick={resetAll}>
         <FullPreview media={previewImage} isOpen={isPreviewOpen} />
       </Overlay>
-      <Overlay isOpen onClick={resetAll}>
-        <Drawer />
-      </Overlay>
+      <Drawer isOpen={isDrawerOpen} onClose={closeDrawer} />
       <div className="bg-yellow-400">
         <Header />
         <main className="min-h-screen">{children}</main>

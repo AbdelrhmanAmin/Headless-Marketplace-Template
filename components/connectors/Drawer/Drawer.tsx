@@ -3,19 +3,30 @@ import { LinkItem, Stack, Button } from '@components/ui'
 import React from 'react'
 import { SOCIAL_MEDIA_LINKS, PRODUCTS } from '@constants/common'
 import s from './Drawer.module.css'
+import cn from 'classnames'
 
-const Drawer = () => {
+interface IDrawer {
+  isOpen: boolean
+  onClose: () => void
+}
+
+const Drawer = ({ isOpen, onClose }: IDrawer) => {
   return (
-    <aside className={s.root}>
+    <aside className={cn(s.root, isOpen ? s.show : s.hide)}>
       <Stack className="pt-3 space-y-8 divide-y-2 divide-gray-500 capitalize text-gray-100 ">
         <div className="px-4 flex justify-between items-center">
           <h3 className="text-3xl">[Logo]</h3>
           <div>
-            <Button shape="circle" variant="secondary" size="small">
+            <Button
+              shape="circle"
+              variant="secondary"
+              size="small"
+              onClick={onClose}
+            >
               <svg
                 width="22"
                 height="22"
-                stroke='currentColor'
+                stroke="currentColor"
                 fill="currentColor"
                 viewBox="0 0 16 16"
               >

@@ -1,8 +1,15 @@
 .root {
   @apply fixed left-0 top-0 z-20
-  min-h-screen
-  w-full sm:w-96
+  min-h-screen transition duration-200
   bg-gray-800;
+}
+
+.show {
+  @apply w-full sm:w-96;
+}
+
+.hide {
+  @apply w-0 -left-96;
 }
 
 .menuTitle {
