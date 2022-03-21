@@ -2,6 +2,7 @@ import React from 'react'
 import { IProductPage } from './Product'
 import { Stack, ImageViewer } from '@components/ui'
 import { useUI } from '@state'
+import s from './Product.module.css'
 
 const ProductPreview = ({
   media,
@@ -10,14 +11,13 @@ const ProductPreview = ({
 }: Pick<IProductPage, 'media' | 'status' | 'className' | 'isLoading'>) => {
   const { openFullPreview } = useUI()
   return (
-    <Stack className="rounded-lg shadow-lg overflow-hidden">
+    <Stack className={s.productPreview}>
       <div role="button" onClick={() => !isLoading && openFullPreview(media)}>
         <ImageViewer variant="Product" media={media} isLoading={isLoading} />
       </div>
-      <div className="flex items-center justify-between text-white bg-yellow-800 p-3">
-        <div className="flex items-center space-x-2">
+      <div className={s.productPreviewBar}>
+        <div>
           <span>Status: </span>
-
           <span className="font-semibold text-yellow-400">
             {isLoading ? '----' : status}
           </span>

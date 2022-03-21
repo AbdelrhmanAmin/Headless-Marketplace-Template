@@ -56,6 +56,19 @@
   @apply text-xl lg:text-5xl;
 }
 
+.productPreview {
+  @apply rounded-lg shadow-lg overflow-hidden;
+}
+
+.productPreviewBar{
+  @apply flex items-center justify-between
+  text-white bg-yellow-800 p-3
+}
+
+.productPreviewBar > div:first-of-type {
+  @apply flex items-center space-x-2;
+}
+
 .productPayment {
   @apply border-yellow-700 bg-yellow-600
   py-10 px-8
