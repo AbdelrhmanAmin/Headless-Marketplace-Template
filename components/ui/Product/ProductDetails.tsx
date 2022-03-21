@@ -40,9 +40,9 @@ const ProductDetails = ({
               }
             }
             return (
-              <li className="flex justify-between" key={key}>
+              <li key={key}>
                 <span>{key}</span>
-                <span className="text-gray-700">{val}</span>
+                <span>{val}</span>
               </li>
             )
           })

@@ -16,12 +16,11 @@ const CollectionGrid = ({
       <div>
         <strong>📚 Collection</strong>
       </div>
-      <div className="flex overflow-y-auto p-2">
+      <div className={s.collection}>
         {cards.map((card) => (
           <LinkItem
             slug={`${ROUTES.MARKETPLACE.slug}/${card.id}`}
             key={card.id}
-            className="w-full h-full"
           >
             <Card variant="light" {...card} isLoading={isLoading} />
           </LinkItem>

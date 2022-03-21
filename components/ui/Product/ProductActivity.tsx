@@ -20,9 +20,9 @@ const ProductActivity = ({
           episode &&
           episode.map(({ name }) => {
             return (
-              <li className="flex justify-between" key={name}>
+              <li key={name}>
                 <span>Episode Name:</span>
-                <span className="text-gray-700">{name}</span>
+                <span>{name}</span>
               </li>
             )
           })

@@ -18,7 +18,7 @@ const ProductPreview = ({
       <div className={s.productPreviewBar}>
         <div>
           <span>Status: </span>
-          <span className="font-semibold text-yellow-400">
+          <span>
             {isLoading ? '----' : status}
           </span>
         </div>

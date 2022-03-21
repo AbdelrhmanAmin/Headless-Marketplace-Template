@@ -5,7 +5,7 @@ import s from './Product.module.css'
 const ProductPayment = () => {
   return (
     <div className={s.productPayment}>
-      <div className="w-fit">
+      <div>
         <Button variant="primary" size="large" shape="block">
           Buy Now 💳
         </Button>
