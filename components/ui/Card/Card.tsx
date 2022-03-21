@@ -1,5 +1,5 @@
 import React from 'react'
-import { Stack, Badge, ImageViewer } from '@components/ui'
+import { Stack, Badge, ImageViewer, Skeleton } from '@components/ui'
 import { Coin } from '@components/icons'
 import s from './Card.module.css'
 import cn from 'classnames'
@@ -20,7 +20,7 @@ const Card = ({
   price,
   status,
   isLoading = false,
-  variant = "light",
+  variant = 'light',
 }: ICard) => {
   const memoizedPrice = React.useMemo(
     () => Math.floor(Math.random() * 1000) + 1,
@@ -41,7 +41,7 @@ const Card = ({
             <div className="text-white font-bold h-3.5 w-12">
               {isLoading ? (
                 <div className="items-center justify-center flex h-full w-full">
-                  <div className="w-16 h-2 bg-gray-600 rounded-full animate-pulse" />
+                  <Skeleton className="w-16 h-2 rounded-md" />
                 </div>
               ) : (
                 <span>{status}</span>
@@ -54,7 +54,9 @@ const Card = ({
         <div className={s.cardDetails}>
           <Stack className="overflow-hidden">
             {isLoading ? (
-              <div className="w-full h-3.5 bg-gray-600 rounded-md animate-pulse mt-1 pr-8" />
+              <div className='pr-8'>
+                <Skeleton className="w-full h-3.5 rounded-md mt-1" />
+              </div>
             ) : (
               <h2 className={s.cardName}>{name}</h2>
             )}
@@ -62,9 +64,7 @@ const Card = ({
 
           <Stack>
             {isLoading ? (
-              <div className="flex w-full items-center space-x-1 pl-4">
-                <div className="w-full h-3.5 bg-gray-600 rounded-md animate-pulse mt-1" />
-              </div>
+              <Skeleton className="w-full h-3.5 rounded-md mt-1" />
             ) : (
               <div className="flex items-center space-x-1">
                 <span className={s.cardPrice}>{price || memoizedPrice}</span>
