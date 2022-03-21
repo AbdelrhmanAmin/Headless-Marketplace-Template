@@ -1,0 +1,17 @@
+import React from 'react'
+import { Button } from '@components/ui'
+import s from './Product.module.css'
+
+const ProductPayment = () => {
+  return (
+    <div className={s.productPayment}>
+      <div>
+        <Button variant="primary" size="large" shape="block">
+          Buy Now 💳
+        </Button>
+      </div>
+    </div>
+  )
+}
+
+export default ProductPayment

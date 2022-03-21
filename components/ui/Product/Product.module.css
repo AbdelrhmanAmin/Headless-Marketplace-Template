@@ -56,12 +56,32 @@
   @apply text-xl lg:text-5xl;
 }
 
+.productPreview {
+  @apply rounded-lg shadow-lg overflow-hidden;
+}
+
+.productPreviewBar {
+  @apply flex items-center justify-between
+  text-white bg-yellow-800 p-3;
+}
+
+.productPreviewBar > div:first-of-type {
+  @apply flex items-center space-x-2;
+}
+
+.productPreviewBar > div:first-of-type > span:last-of-type {
+  @apply font-semibold text-yellow-400;
+}
 .productPayment {
   @apply border-yellow-700 bg-yellow-600
   py-10 px-8
   shadow hover:shadow-md
   transition-shadow duration-200
   rounded-md;
+}
+
+.productPayment > div {
+  @apply w-fit;
 }
 
 .productBox {
@@ -85,5 +105,15 @@
 }
 
 .productBox > ul > li {
-  @apply border-b pb-0.5;
+  @apply border-b pb-0.5
+  flex justify-between;
+}
+
+.productBox li span:last-of-type,
+.productBox p {
+  @apply text-gray-700;
+}
+
+.collection {
+  @apply flex overflow-auto p-2;
 }

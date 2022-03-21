@@ -12,11 +12,11 @@
 }
 
 .dark .cardBody {
-  @apply border-gray-800
+  @apply border-gray-800;
 }
 
 .dark .cardPrice {
-  @apply text-gray-400
+  @apply text-gray-400;
 }
 
 .light {
@@ -28,7 +28,7 @@
 }
 
 .light .cardPrice {
-  @apply text-gray-700
+  @apply text-gray-700;
 }
 
 .nftImageContainer {
@@ -38,8 +38,7 @@
 }
 
 .badge {
-  @apply absolute
-  right-3 bottom-3
+  @apply top-3 right-4 absolute
   opacity-90;
 }
 
@@ -66,4 +65,15 @@
   -webkit-box-orient: vertical;
   @apply overflow-hidden text-ellipsis
   text-base font-semibold capitalize;
+}
+.cardPriceContainer {
+  @apply flex items-center space-x-1;
+}
+
+.coin {
+  @apply h-4 w-4;
+}
+
+.skeleton {
+  @apply w-full h-3.5 rounded-md mt-1;
 }
