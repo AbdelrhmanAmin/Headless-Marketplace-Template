@@ -1,7 +1,7 @@
 import React from 'react'
 import { LinkItem, Container } from '@components/ui'
 import { useRouter } from 'next/router'
-import { navigation } from './constants'
+import { PRODUCTS } from '@constants/common'
 
 const Header = () => {
   const { asPath } = useRouter()
@@ -11,17 +11,15 @@ const Header = () => {
       <Container hasPaddingX className="flex">
         <div className="flex w-1/2 justify-start">
           <div className="flex space-x-4 text-xl font-medium">
-            <LinkItem slug='/'>
-              [LOGO]
-            </LinkItem>
-            {navigation.map(({ slug, title }) => (
+            <LinkItem slug="/">[LOGO]</LinkItem>
+            {PRODUCTS.map(({ slug, name }) => (
               <LinkItem
                 variant="ghost"
                 isActive={asPath === slug}
                 slug={slug}
                 key={slug}
               >
-                {title}
+                {name}
               </LinkItem>
             ))}
           </div>

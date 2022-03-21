@@ -1,53 +1,59 @@
-import { Email, Github, Linkedin } from '@components/icons'
+import { IconsQuery } from '@components/icons'
 import { LinkItem, Stack } from '@components/ui'
 import React from 'react'
+import { SOCIAL_MEDIA_LINKS, PRODUCTS } from '@constants/common'
 import s from './Drawer.module.css'
 
 const Drawer = () => {
   return (
-    <aside>
-      <div className={s.root}>
-        <Stack className="pt-8 space-y-8">
-          <div className="px-4">
-            <h3 className="text-3xl text-white">Hello There :)</h3>
+    <aside className={s.root}>
+      <Stack className="pt-3 space-y-8 divide-y-2 divide-gray-500 capitalize text-gray-100 ">
+        <div className="px-4 flex justify-between items-center">
+          <h3 className="text-3xl">[Logo]</h3>
+          <div>x</div>
+        </div>
+        <ul>
+          <div className={s.menuTitle}>
+            <h6>Products</h6>
           </div>
-          <ul>
-            <li>
+          <li>
+            {PRODUCTS.map(({ name, slug }) => (
               <LinkItem
+                key={slug}
                 variant="ghost"
-                slug="/"
-                className="flex justify-start text-xl text-gray-100 space-x-2 w-full px-4"
+                slug={slug}
+                className={s.menuItem}
                 isRounded={false}
               >
-                <Github variant="white" size="small" />
-                <span>Github</span>
+                <span>{name}</span>
               </LinkItem>
-            </li>
-            <li>
+            ))}
+          </li>
+        </ul>
+        <ul>
+          <div className={s.menuTitle}>
+            <h6>Contact Me</h6>
+          </div>
+          {SOCIAL_MEDIA_LINKS.map(({ name, slug }) => (
+            <li key={slug}>
               <LinkItem
                 variant="ghost"
-                slug="/"
-                className="flex justify-start text-xl text-gray-100 space-x-2 w-full px-4"
+                slug={slug}
+                className={s.menuItem}
                 isRounded={false}
+                isExternal
               >
-                <Linkedin variant="white" size="small" />
-                <span>LinkedIn</span>
+                {IconsQuery({
+                  name,
+                  variant: 'white',
+                  size: 'small',
+                })}
+                <span>{name}</span>
               </LinkItem>
             </li>
-            <li>
-              <LinkItem
-                variant="ghost"
-                slug="/"
-                className="flex justify-start text-xl text-gray-100 space-x-2 w-full px-4"
-                isRounded={false}
-              >
-                <Email variant="white" size="small" />
-                <span>Email</span>
-              </LinkItem>
-            </li>
-          </ul>
-        </Stack>
-      </div>
+          ))}
+        </ul>
+      </Stack>
     </aside>
   )
 }

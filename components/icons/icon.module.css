@@ -25,6 +25,10 @@
 }
 
 .small {
+  @apply h-6
+}
+
+.xs {
   @apply h-4;
 }
 

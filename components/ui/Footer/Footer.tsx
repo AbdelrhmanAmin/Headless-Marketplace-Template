@@ -1,25 +1,7 @@
 import { IconsQuery } from '@components/icons'
 import React from 'react'
 import { Stack, LinkItem } from '@components/ui'
-
-const icons = [
-  {
-    slug: 'https://www.linkedin.com/in/abdoamin/',
-    name: 'linkedin',
-  },
-  {
-    slug: 'https://github.com/AbdelrhmanAmin',
-    name: 'github',
-  },
-  {
-    slug: 'https://medium.com/@abdoamin',
-    name: 'medium',
-  },
-  {
-    slug: 'mailto:abdo.amin9991@gmail.com',
-    name: 'email',
-  },
-]
+import { SOCIAL_MEDIA_LINKS } from '@constants/common'
 
 const Footer = () => {
   return (
@@ -32,7 +14,7 @@ const Footer = () => {
           <strong>Front End Developer</strong>
         </div>
         <div className="flex">
-          {icons.map(({ name, slug }) => (
+          {SOCIAL_MEDIA_LINKS.map(({ name, slug }) => (
             <LinkItem key={slug} slug={slug} isExternal>
               {IconsQuery({
                 name,

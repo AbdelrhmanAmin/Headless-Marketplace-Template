@@ -1,5 +1,16 @@
 .root {
-  @apply fixed left-0 top-0 
+  @apply fixed left-0 top-0 z-20
   min-h-screen w-96
   bg-gray-800;
+}
+
+.menuTitle {
+  @apply px-4 mb-2
+  text-gray-400;
+}
+
+.menuItem {
+  @apply flex justify-start
+  text-xl
+  space-x-4 w-full px-4;
 }
