@@ -1,8 +1,8 @@
 import React from 'react'
 import { Stack, ImageViewer } from '@components/ui'
 import type { ICard } from '@components/ui'
-import { Coin } from '@components/icons'
 import { useUI } from '@state'
+
 import cn from 'classnames'
 import s from './Product.module.css'
 import formatDate from 'utils/formatDate'
@@ -10,6 +10,7 @@ import CollectionGrid from './CollectionGrid'
 import ProductPayment from './ProductPayment'
 import ProductBoxSkeleton from './ProductBoxSkeleton'
 import ProductDescription from './ProductDescription'
+import ProductHeader from './ProductHeader'
 
 interface IProductDetails {
   id: number
@@ -84,34 +85,6 @@ const ProductActivity = ({
           })
         )}
       </ul>
-    </div>
-  )
-}
-
-interface IProductHeader
-  extends Pick<IProductPage, 'price' | 'name' | 'className' | 'isLoading'> {
-  screen: 'desktop' | 'mobile'
-}
-const ProductHeader = ({
-  price,
-  name,
-  isLoading,
-  screen,
-  className,
-}: IProductHeader) => {
-  const memoizedPrice = React.useMemo(
-    () => Math.floor(Math.random() * 1000) + 1,
-    []
-  )
-  return (
-    <div className={cn(s.productHeader, screen && s[screen], className)}>
-      <h1>{isLoading ? '--------' : name}</h1>
-      <div className={s.priceContainer}>
-        <span>
-          <Coin />
-        </span>
-        <span>{isLoading ? '000' : price || memoizedPrice}</span>
-      </div>
     </div>
   )
 }
