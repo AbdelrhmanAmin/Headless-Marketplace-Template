@@ -4,62 +4,12 @@ import type { ICard } from '@components/ui'
 import { useUI } from '@state'
 import cn from 'classnames'
 import s from './Product.module.css'
-import formatDate from 'utils/formatDate'
 import CollectionGrid from './CollectionGrid'
 import ProductPayment from './ProductPayment'
-import ProductBoxSkeleton from './ProductBoxSkeleton'
 import ProductDescription from './ProductDescription'
 import ProductHeader from './ProductHeader'
 import ProductActivity from './ProductActivity'
-
-interface IProductDetails {
-  id: number
-  origin: { name: string }
-  location: { name: string }
-  species: string
-  gender: string
-  created: string
-}
-
-const ProductDetails = ({
-  details,
-  isLoading,
-}: {
-  details: IProductDetails
-  isLoading?: boolean
-}) => {
-  return (
-    <div className={s.productBox}>
-      <div>
-        <strong>📒 Details</strong>
-      </div>
-      <ul className={s.maxHeight}>
-        {isLoading ? (
-          <ProductBoxSkeleton num={10} />
-        ) : (
-          Object.entries(details).map(([key, value]) => {
-            let val
-            if (typeof value === 'object') {
-              val = value.name
-            } else {
-              if (key === 'created') {
-                val = formatDate(value)
-              } else {
-                val = value
-              }
-            }
-            return (
-              <li className="flex justify-between" key={key}>
-                <span>{key}</span>
-                <span className="text-gray-700">{val}</span>
-              </li>
-            )
-          })
-        )}
-      </ul>
-    </div>
-  )
-}
+import ProductDetails, { IProductDetails } from './ProductDetails'
 
 const ProductPreview = ({
   media,
