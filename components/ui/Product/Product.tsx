@@ -1,5 +1,5 @@
 import React from 'react'
-import { Stack, ImageViewer, Skeleton } from '@components/ui'
+import { Stack, ImageViewer } from '@components/ui'
 import type { ICard } from '@components/ui'
 import { Coin } from '@components/icons'
 import { useUI } from '@state'
@@ -8,6 +8,7 @@ import s from './Product.module.css'
 import formatDate from 'utils/formatDate'
 import CollectionGrid from './CollectionGrid'
 import ProductPayment from './ProductPayment'
+import ProductBoxSkeleton from './ProductBoxSkeleton'
 
 interface IProductDetails {
   id: number
@@ -55,23 +56,6 @@ const ProductDetails = ({
         )}
       </ul>
     </div>
-  )
-}
-
-const ProductBoxSkeleton = ({ num = 5 }: { num?: number }) => {
-  const skeletons = new Array(num).fill('')
-  return (
-    <>
-      {skeletons.map((v, k) => {
-        return (
-          <div className="py-2" key={k}>
-            <div className="h-2">
-              <Skeleton />
-            </div>
-          </div>
-        )
-      })}
-    </>
   )
 }
 
