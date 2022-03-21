@@ -5,8 +5,9 @@ import s from './Button.module.css'
 interface IButton {
   children: React.ReactNode
   className?: string
-  variant?: 'primary'
-  size?: 'large'
+  variant?: 'primary' | 'secondary'
+  size?: 'large' | 'medium' | 'small' | 'tiny'
+  shape?: 'circle' | 'block'
 }
 
 const Button = ({
@@ -14,18 +15,16 @@ const Button = ({
   className,
   size = 'large',
   variant = 'primary',
+  shape = 'block',
 }: IButton) => {
   const rootClass = cn(
     s.root,
     variant && [s[variant]],
     size && [s[size]],
+    shape && [s[shape]],
     className
   )
-  return (
-    <button className={rootClass}>
-      {children}
-    </button>
-  )
+  return <button className={rootClass}>{children}</button>
 }
 
 export default Button
