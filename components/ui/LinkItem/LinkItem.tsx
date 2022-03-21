@@ -2,14 +2,15 @@ import React from 'react'
 import Link from 'next/link'
 import cn from 'classnames'
 import s from './LinkItem.module.css'
-interface LinkItemPropsInterface {
+interface LinkItemPropsInterface
+  extends React.AnchorHTMLAttributes<HTMLAnchorElement> {
   slug: string
   variant?: 'primary' | 'ghost'
   className?: string
   isActive?: boolean
   isExternal?: true
-  onClick?: () => {}
   children: React.ReactNode | string
+  isRounded?: boolean
 }
 
 const LinkItem = ({
@@ -19,6 +20,7 @@ const LinkItem = ({
   isActive,
   isExternal,
   variant,
+  isRounded = true,
   ...rest
 }: LinkItemPropsInterface) => {
   const handleOnClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -31,6 +33,7 @@ const LinkItem = ({
     s.root,
     variant && s[variant],
     { [s.active]: isActive },
+    { 'rounded-md': isRounded },
     className
   )
   if (isExternal) {

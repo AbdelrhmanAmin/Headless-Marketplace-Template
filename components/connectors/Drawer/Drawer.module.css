@@ -1,0 +1,37 @@
+.root {
+  @apply fixed top-0 z-20
+  min-h-screen overflow-y-auto h-full
+  w-full sm:w-96
+  transition-all duration-300
+  bg-gray-800;
+}
+
+.show {
+  @apply left-0;
+}
+
+.hide {
+  @apply -left-96;
+}
+
+.wrapper {
+  @apply pt-3 space-y-8
+  divide-y-2 divide-gray-500
+  capitalize text-gray-100;
+}
+
+.wrapper > div:first-of-type {
+  @apply flex justify-between items-center
+  px-4;
+}
+
+.menuTitle {
+  @apply px-4 mb-2
+  text-gray-400;
+}
+
+.menuItem {
+  @apply flex justify-start
+  text-xl
+  space-x-4 w-full px-4;
+}

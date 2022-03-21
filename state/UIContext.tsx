@@ -5,6 +5,10 @@ export interface UIContextStateI {
   // Overlay
   isOverlayOpen: boolean
   setOverlayOpen: (isOverlayOpen: boolean) => void
+  // Drawer
+  isDrawerOpen: boolean
+  openDrawer: () => void
+  closeDrawer: () => void
   // FullPreview
   isPreviewOpen: boolean
   previewImage: string
@@ -17,6 +21,10 @@ const initialState: UIContextStateI = {
   // Overlay
   isOverlayOpen: false,
   setOverlayOpen: () => {},
+  // Drawer
+  isDrawerOpen: false,
+  openDrawer: () => {},
+  closeDrawer: () => {},
   // FullPreview
   isPreviewOpen: false,
   previewImage: '/',
@@ -36,6 +44,18 @@ const UIProvider = ({ children }: UIProviderProps) => {
 
   // Overlay
   const [isOverlayOpen, setOverlayOpen] = React.useState(false)
+  // Drawer
+  const [isDrawerOpen, setDrawerOpen] = React.useState(false)
+
+  const openDrawer = React.useCallback(() => {
+    setDrawerOpen(true)
+    setOverlayOpen(true)
+  }, [])
+
+  const closeDrawer = React.useCallback(() => {
+    setDrawerOpen(false)
+    setOverlayOpen(false)
+  }, [])
 
   // Image FullPreview
   const [isPreviewOpen, setPreviewOpen] = React.useState(false)
@@ -56,14 +76,19 @@ const UIProvider = ({ children }: UIProviderProps) => {
   const resetAll = React.useCallback(() => {
     setOverlayOpen(false)
     closeFullPreview()
+    closeDrawer()
   }, [])
 
-  // React.useEffect(() => resetAll(), [asPath])
+  React.useEffect(() => resetAll(), [asPath])
 
   const contextValue = {
     // Overlay
     isOverlayOpen,
     setOverlayOpen,
+    // Drawer
+    isDrawerOpen,
+    openDrawer,
+    closeDrawer,
     // FullPreview
     isPreviewOpen,
     previewImage,

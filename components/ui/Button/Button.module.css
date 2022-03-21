@@ -34,6 +34,15 @@
   ring-1 ring-hover-primary;
 }
 
+.secondary {
+  @apply bg-secondary text-white;
+}
+
+.secondary:hover {
+  @apply bg-hover-secondary shadow-sm text-white;
+}
+
+
 .large {
   @apply min-h-16 px-6 py-2
   tracking-widest
@@ -52,4 +61,8 @@
 
 .tiny {
   @apply p-0.5;
+}
+
+.circle {
+  @apply rounded-full;
 }

@@ -7,7 +7,7 @@ export { default as IconsQuery } from './IconsQuery'
 
 export interface IconProps {
   variant?: 'dark' | 'light'
-  size: 'xxxl' | 'xxl' | 'xl' | 'large' | 'medium' | 'small'
+  size: 'xxxl' | 'xxl' | 'xl' | 'large' | 'medium' | 'small' | 'xs'
 }
 export interface ISocialIcons {
   variant?: 'default' | 'white'
