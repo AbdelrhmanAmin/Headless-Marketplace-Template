@@ -1,0 +1,5 @@
+.root {
+  @apply fixed left-0 top-0 
+  min-h-screen w-96
+  bg-gray-800;
+}
