@@ -14,9 +14,9 @@ const Layout = ({ children }: LayoutProps) => {
       <Overlay isOpen={isOverlayOpen} onClick={resetAll}>
         <FullPreview media={previewImage} isOpen={isPreviewOpen} />
       </Overlay>
-      {/* <Overlay isOpen={isOverlayOpen} onClick={resetAll}>
-      </Overlay> */}
-      <Drawer />
+      <Overlay isOpen onClick={resetAll}>
+        <Drawer />
+      </Overlay>
       <div className="bg-yellow-400">
         <Header />
         <main className="min-h-screen">{children}</main>

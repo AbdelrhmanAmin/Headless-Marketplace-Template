@@ -2,7 +2,7 @@
   @apply relative inline-flex h-full
   w-full cursor-pointer items-center
   justify-center
-  rounded-md border
+  border
   border-transparent py-1
   px-1.5
   text-center
