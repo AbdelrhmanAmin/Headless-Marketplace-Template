@@ -2,6 +2,7 @@ import React from 'react'
 import { Stack, Badge, ImageViewer } from '@components/ui'
 import { Coin } from '@components/icons'
 import s from './Card.module.css'
+import cn from 'classnames'
 
 export interface ICard {
   id: number
@@ -10,15 +11,23 @@ export interface ICard {
   price: number
   status: string
   isLoading?: boolean
+  variant?: 'light' | 'dark'
 }
 
-const Card = ({ media, name, price, status, isLoading = false }: ICard) => {
+const Card = ({
+  media,
+  name,
+  price,
+  status,
+  isLoading = false,
+  variant = "light",
+}: ICard) => {
   const memoizedPrice = React.useMemo(
     () => Math.floor(Math.random() * 1000) + 1,
     []
   )
   return (
-    <div className={s.root}>
+    <div className={cn(s.root, variant && s[variant])}>
       <div className={s.nftImageContainer}>
         <ImageViewer
           isLoading={isLoading}
@@ -47,7 +56,7 @@ const Card = ({ media, name, price, status, isLoading = false }: ICard) => {
             {isLoading ? (
               <div className="w-full h-3.5 bg-gray-600 rounded-md animate-pulse mt-1 pr-8" />
             ) : (
-              <h2 className={s.nftName}>{name}</h2>
+              <h2 className={s.cardName}>{name}</h2>
             )}
           </Stack>
 
@@ -58,7 +67,7 @@ const Card = ({ media, name, price, status, isLoading = false }: ICard) => {
               </div>
             ) : (
               <div className="flex items-center space-x-1">
-                <span className="text-gray-700">{price || memoizedPrice}</span>
+                <span className={s.cardPrice}>{price || memoizedPrice}</span>
                 <span className="h-4 w-4">
                   <Coin />
                 </span>
