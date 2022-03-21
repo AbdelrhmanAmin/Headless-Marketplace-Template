@@ -25,7 +25,7 @@ const Drawer = () => {
                 className={s.menuItem}
                 isRounded={false}
               >
-                <span>{name}</span>
+                <span>⚖️ {name}</span>
               </LinkItem>
             ))}
           </li>
