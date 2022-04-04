@@ -2,12 +2,12 @@ import React from 'react'
 import { Card, Container, LinkItem, TitleAndMeta } from '@components/ui'
 import type { ICard } from '@components/ui'
 import ROUTES from '@constants/routes.json'
+import marketplaceFetcher from 'lib/marketplaceFetcher'
 
 export default function Marketplace({ cards }: { cards: ICard[] }) {
   const cardsRef = React.useRef(cards)
   const timerRef: any = React.useRef(null)
   const currentPageRef = React.useRef(2)
-  const [, trigger] = React.useReducer((prev) => !prev, false)
   const lastCardRef = React.useRef(null)
   const populateWithDummyCards = () => {
     const tmp = [...cardsRef.current]
@@ -23,42 +23,16 @@ export default function Marketplace({ cards }: { cards: ICard[] }) {
         return card
       })
     )
-    trigger()
     return startingIndex
   }
   const fetchAndHydrate = async (startingIndex: number) => {
-    const result = await fetch('https://rickandmortyapi.com/graphql', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify({
-        query: `
-          query {
-            characters(page: ${currentPageRef.current}){
-              results{
-                id
-                name
-                media:image
-              }
-            }
-          }
-          
-          `,
-      }),
-    })
-    if (!result.ok) {
-      console.error(result)
-      return {}
-    }
+    const data = await marketplaceFetcher(currentPageRef.current)
     currentPageRef.current += 1
 
-    const { data } = await result.json()
     const cards = data.characters.results
     for (let i = 0; i < 20; i++) {
       cardsRef.current[startingIndex + i] = cards[i]
     }
-    trigger()
   }
 
   React.useEffect(() => {
@@ -119,34 +93,7 @@ export default function Marketplace({ cards }: { cards: ICard[] }) {
 }
 
 export const getStaticProps = async () => {
-  const result = await fetch('https://rickandmortyapi.com/graphql', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      query: `
-        query {
-          characters(page: 1){
-            results{
-              id
-              name
-              media:image
-              status
-            }
-          }
-        }
-        
-        `,
-    }),
-  })
-
-  if (!result.ok) {
-    console.error(result)
-    return {}
-  }
-
-  const { data } = await result.json()
+  const data = await marketplaceFetcher(1)
   const cards = data.characters.results
 
   return {

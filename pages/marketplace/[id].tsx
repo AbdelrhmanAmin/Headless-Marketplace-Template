@@ -2,6 +2,7 @@ import React from 'react'
 import { Product, Container, TitleAndMeta } from '@components/ui'
 import type { ICard, IProductPage } from '@components/ui'
 import { useRouter } from 'next/router'
+import productFetcher from 'lib/productFetcher'
 
 const ProductPage = ({
   product,
@@ -23,35 +24,15 @@ const ProductPage = ({
 }
 
 export const getStaticPaths = async () => {
-  const result = await fetch('https://rickandmortyapi.com/graphql', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      query: `
-        query {
-          characters{
-            results{
-              id
-            }
-          }
-        }
-        
-        `,
-    }),
-  })
-
-  const { data } = await result.json()
-  const cards = data.characters.results
+  const data = await productFetcher()
 
   const staticPaths: { params: { id: string } }[] = []
 
-  if (!result.ok) {
-    console.error(result)
+  if (data === 'error') {
     return staticPaths
   }
 
+  const cards = data.characters.results
   cards.forEach(({ id }: ICard) =>
     staticPaths.push({ params: { id: `${id}` } })
   )
@@ -67,51 +48,13 @@ interface PageContext {
 
 export const getStaticProps = async (context: PageContext) => {
   const { id } = context.params
-  const result = await fetch('https://rickandmortyapi.com/graphql', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify({
-      query: `
-      query ($ID:ID = ${id}) {
-        character(id: $ID) {
-          id
-          name
-          created
-          gender
-          media: image
-          origin {
-            name
-          }
-          location {
-            name
-          }
-          species
-          status
-          episode {
-            name
-          }
-        }
-        characters {
-          results {
-            id
-            name
-            media: image
-            status
-          }
-        }
-      }      
-      `,
-    }),
-  })
+  const data = await productFetcher(id)
 
-  if (!result.ok) {
-    console.error(result)
+  console.log(data)
+  if (data === 'error') {
     return {}
   }
 
-  const { data } = await result.json()
   const product = data.character
   const cards = data.characters.results
 
